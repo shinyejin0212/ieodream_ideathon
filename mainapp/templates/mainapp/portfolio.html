@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="hero-wrap js-fullheight">
@@ -7,7 +8,7 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
         <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Portfolio</span></p>
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Portfolio</span></p>
           <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Portfolio</h1>
         </div>
       </div>
@@ -25,58 +26,58 @@
       </div>
       <div class="row">
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="portfolio.html" class="image" style="background-image: url('static/images/work-1.jpg'); " data-scrollax=" properties: { translateY: '-20%'}">
+          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('static/images/work-1.jpg'); " data-scrollax=" properties: { translateY: '-20%'}">
           </a>
           <div class="text">
             <h4 class="subheading">Illustration</h4>
-            <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="portfolio.html" class="btn btn-primary px-4">View Portfolio</a></p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="portfolio.html" class="image image-2 order-2" style="background-image: url('static/images/work-2.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('static/images/work-2.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text order-1">
             <h4 class="subheading">Application</h4>
-            <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="portfolio.html" class="btn btn-primary px-4">View Portfolio</a></p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="portfolio.html" class="image" style="background-image: url('static/images/work-3.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('static/images/work-3.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text">
             <h4 class="subheading">Web Design</h4>
-            <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="portfolio.html" class="btn btn-primary px-4">View Portfolio</a></p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="portfolio.html" class="image image-2 order-2" style="background-image: url('static/images/work-4.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('static/images/work-4.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text order-1">
             <h4 class="subheading">Application</h4>
-            <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="portfolio.html" class="btn btn-primary px-4">View Portfolio</a></p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="portfolio.html" class="image" style="background-image: url('static/images/work-5.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('static/images/work-5.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text">
             <h4 class="subheading">Web Design</h4>
-            <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="portfolio.html" class="btn btn-primary px-4">View Portfolio</a></p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="portfolio.html" class="image image-2 order-2" style="background-image: url('static/images/work-6.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('static/images/work-6.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text order-1">
             <h4 class="subheading">Application</h4>
-            <h2 class="heading"><a href="portfolio.html">Even the all-powerful Pointing has no control</a></h2>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="portfolio.html" class="btn btn-primary px-4">View Portfolio</a></p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
           </div>
         </div>
       </div>
