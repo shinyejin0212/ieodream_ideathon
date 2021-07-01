@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
 <div class="hero-wrap js-fullheight">
     <div class="overlay"></div>
@@ -25,10 +24,10 @@
             <div class="text-1 p-4 d-flex align-items-center">
               <h3>The Verge<br><span class="tag">Website</span></h3>
             </div>
-            <img src="static/images/image_1.jpg" class="img-fluid" alt="">
+            <img src="{% static 'images/image_1.jpg' %}" class="img-fluid" alt="">
             <div class="text p-4 d-flex align-items-center">
               <div class="user d-flex align-items-center">
-                <div class="user-img mr-3" style="background-image: url(static/images/person_1.jpg);"></div>
+                <div class="user-img mr-3" style="background-image: url(/static/images/person_1.jpg);"></div>
                 <h3>John Bruce <br><span class="position">Designer</span></h3>
               </div>
             </div>
@@ -45,10 +44,10 @@
                     <div class="text-1 p-4 d-flex align-items-center">
                       <h3>Racks<br><span class="tag">Website</span></h3>
                     </div>
-                    <img src="static/images/image_5.jpg" class="img-fluid" alt="">
+                    <img src="{% static 'images/image_5.jpg' %}" class="img-fluid" alt="">
                     <div class="text p-4 d-flex align-items-center">
                       <div class="user d-flex align-items-center">
-                        <div class="user-img mr-3" style="background-image: url(static/images/person_1.jpg);"></div>
+                        <div class="user-img mr-3" style="background-image: url(/static/images/person_1.jpg);"></div>
                         <h3>John Bruce <br><span class="position">Designer</span></h3>
                       </div>
                     </div>
@@ -60,10 +59,10 @@
                     <div class="text-1 p-4 d-flex align-items-center">
                       <h3>Zendesk<br><span class="tag">Website</span></h3>
                     </div>
-                    <img src="static/images/image_4.jpg" class="img-fluid" alt="">
+                    <img src="{% static 'images/image_4.jpg' %}" class="img-fluid" alt="">
                     <div class="text p-4 d-flex align-items-center">
                       <div class="user d-flex align-items-center">
-                        <div class="user-img mr-3" style="background-image: url(static/images/person_1.jpg);"></div>
+                        <div class="user-img mr-3" style="background-image: url(/static/images/person_1.jpg);"></div>
                         <h3>John Bruce <br><span class="position">Designer</span></h3>
                       </div>
                     </div>
@@ -80,10 +79,10 @@
                     <div class="text-1 p-4 d-flex align-items-center">
                       <h3>Curator<br><span class="tag">Website</span></h3>
                     </div>
-                    <img src="static/images/image_6.jpg" class="img-fluid" alt="">
+                    <img src="{% static 'images/image_6.jpg' %}" class="img-fluid" alt="">
                     <div class="text p-4 d-flex align-items-center">
                       <div class="user d-flex align-items-center">
-                        <div class="user-img mr-3" style="background-image: url(static/images/person_1.jpg);"></div>
+                        <div class="user-img mr-3" style="background-image: url(/static/images/person_1.jpg);"></div>
                         <h3>John Bruce <br><span class="position">Designer</span></h3>
                       </div>
                     </div>
@@ -94,10 +93,10 @@
                     <div class="text-1 p-4 d-flex align-items-center">
                       <h3>Tasty<br><span class="tag">Website</span></h3>
                     </div>
-                    <img src="static/images/image_3.jpg" class="img-fluid" alt="">
+                    <img src="{% static 'images/image_3.jpg' %}" class="img-fluid" alt="">
                     <div class="text p-4 d-flex align-items-center">
                       <div class="user d-flex align-items-center">
-                        <div class="user-img mr-3" style="background-image: url(static/images/person_1.jpg);"></div>
+                        <div class="user-img mr-3" style="background-image: url(/static/images/person_1.jpg);"></div>
                         <h3>John Bruce <br><span class="position">Designer</span></h3>
                       </div>
                     </div>
@@ -113,10 +112,10 @@
             <div class="text-1 p-4 d-flex align-items-center">
               <h3>Voyage<br><span class="tag">Website</span></h3>
             </div>
-            <img src="static/images/image_2.jpg" class="img-fluid" alt="">
+            <img src="{% static 'images/image_2.jpg' %}" class="img-fluid" alt="">
             <div class="text p-4 d-flex align-items-center">
               <div class="user d-flex align-items-center">
-                <div class="user-img mr-3" style="background-image: url(static/images/person_1.jpg);"></div>
+                <div class="user-img mr-3" style="background-image: url(/static/images/person_1.jpg);"></div>
                 <h3>John Bruce <br><span class="position">Designer</span></h3>
               </div>
             </div>
@@ -220,7 +219,7 @@
       </div>
       <div class="row">
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('static/images/work-1.jpg'); " data-scrollax=" properties: { translateY: '-20%'}">
+          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('/static/images/work-1.jpg'); " data-scrollax=" properties: { translateY: '-20%'}">
           </a>
           <div class="text">
             <h4 class="subheading">Illustration</h4>
@@ -230,7 +229,7 @@
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('static/images/work-2.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('/static/images/work-2.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text order-1">
             <h4 class="subheading">Application</h4>
             <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
@@ -239,7 +238,7 @@
           </div>
         </div>
         <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('static/images/work-3.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('/static/images/work-3.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
           <div class="text">
             <h4 class="subheading">Web Design</h4>
             <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
@@ -270,7 +269,7 @@
           <div class="carousel-testimony owl-carousel ftco-owl">
             <div class="item text-center">
               <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url(static/images/person_1.jpg)">
+                <div class="user-img mb-4" style="background-image: url(/static/images/person_1.jpg)">
                   <span class="quote d-flex align-items-center justify-content-center">
                     <i class="icon-quote-left"></i>
                   </span>
@@ -284,7 +283,7 @@
             </div>
             <div class="item text-center">
               <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url(static/images/person_2.jpg)">
+                <div class="user-img mb-4" style="background-image: url(/static/images/person_2.jpg)">
                   <span class="quote d-flex align-items-center justify-content-center">
                     <i class="icon-quote-left"></i>
                   </span>
@@ -298,7 +297,7 @@
             </div>
             <div class="item text-center">
               <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url(static/images/person_3.jpg)">
+                <div class="user-img mb-4" style="background-image: url(/static/images/person_3.jpg)">
                   <span class="quote d-flex align-items-center justify-content-center">
                     <i class="icon-quote-left"></i>
                   </span>
@@ -312,7 +311,7 @@
             </div>
             <div class="item text-center">
               <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url(static/images/person_1.jpg)">
+                <div class="user-img mb-4" style="background-image: url(/static/images/person_1.jpg)">
                   <span class="quote d-flex align-items-center justify-content-center">
                     <i class="icon-quote-left"></i>
                   </span>
@@ -326,7 +325,7 @@
             </div>
             <div class="item text-center">
               <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url(static/images/person_1.jpg)">
+                <div class="user-img mb-4" style="background-image: url(/static/images/person_1.jpg)">
                   <span class="quote d-flex align-items-center justify-content-center">
                     <i class="icon-quote-left"></i>
                   </span>
@@ -393,7 +392,7 @@
       <div class="row">
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">
-            <a href="{%url 'blogsingle' %}" class="block-20" style="background-image: url('static/images/image_1.jpg');">
+            <a href="{%url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image_1.jpg');">
             </a>
             <div class="text p-4 d-block">
               <div class="meta mb-3">
@@ -407,7 +406,7 @@
         </div>
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry" data-aos-delay="100">
-            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('static/images/image_2.jpg');">
+            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image_2.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-3">
@@ -421,7 +420,7 @@
         </div>
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry" data-aos-delay="200">
-            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('static/images/image_3.jpg');">
+            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image_3.jpg');">
             </a>
             <div class="text p-4">
               <div class="meta mb-3">
