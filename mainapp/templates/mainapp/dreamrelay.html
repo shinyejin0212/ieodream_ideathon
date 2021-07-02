@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div id="particles-js"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+        <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2">꿈을 이어가는</span> </p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">꿈 릴레이</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row no-gutters justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <span class="subheading">이야기의 시작</span>
+          <h2 class="mb-4">여러분은 오늘 어떤 꿈을 꾸셨나요?</h2>
+          <p>여러분의 꿈으로 작품을 시작해 주세요!!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+          <a href="{% url 'story' %}" class="image" style="background-image: url('/static/images/work-1.jpg'); " data-scrollax=" properties: { translateY: '-20%'}">
+          </a>
+          <div class="text">
+            <h4 class="subheading">Story</h4>
+            <h2 class="heading"><a href="{% url 'story' %}">오늘은 꿈에서 어떤 이야기가 시작되었나요?</a></h2>
+            <p>오늘 꾸었던 꿈 속의 이야기를 들려주세요.</p>
+            <p><a href="{% url 'story' %}" class="btn btn-primary px-4">이야기 시작하기</a></p>
+          </div>
+        </div>
+        <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+          <a href="{% url 'music' %}" class="image image-2 order-2" style="background-image: url('/static/images/work-2.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <div class="text order-1">
+            <h4 class="subheading">Music</h4>
+            <h2 class="heading"><a href="{% url 'music' %}">오늘은 꿈에서 어떤 악상이 떠올랐나요?</a></h2>
+            <p>오늘 꾸었던 꿈 속에서 흥얼거렸던 음악을 기록해 주세요.</p>
+            <p><a href="{% url 'music' %}" class="btn btn-primary px-4">작곡 시작하기</a></p>
+          </div>
+        </div>
+        <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+          <a href="{% url 'illustration' %}" class="image" style="background-image: url('/static/images/work-3.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <div class="text">
+            <h4 class="subheading">Illustration</h4>
+            <h2 class="heading"><a href="{% url 'illustration' %}">오늘은 꿈에서 어떤 풍경을 보았나요?</a></h2>
+            <p>오늘 꾸었던 꿈 속에서 보았던 풍경을 그려주세요.</p>
+            <p><a href="{% url 'illustration' %}" class="btn btn-primary px-4">그림 시작하기</a></p>
+          </div>
+        </div>
+        <!-- <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('/static/images/work-4.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <div class="text order-1">
+            <h4 class="subheading">Application</h4>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
+          </div>
+        </div>
+        <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+          <a href="{% url 'portfolio' %}" class="image" style="background-image: url('/static/images/work-5.jpg'); " data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <div class="text">
+            <h4 class="subheading">Web Design</h4>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
+          </div>
+        </div>
+        <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
+          <a href="{% url 'portfolio' %}" class="image image-2 order-2" style="background-image: url('/static/images/work-6.jpg');" data-scrollax=" properties: { translateY: '-20%'}"></a>
+          <div class="text order-1">
+            <h4 class="subheading">Application</h4>
+            <h2 class="heading"><a href="{% url 'portfolio' %}">Even the all-powerful Pointing has no control</a></h2>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <p><a href="{% url 'portfolio' %}" class="btn btn-primary px-4">View Portfolio</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col text-center">
+          <div class="block-27">
+            <ul>
+              <li><a href="#">&lt;</a></li>
+              <li class="active"><span>1</span></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">&gt;</a></li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+{% endblock %}
