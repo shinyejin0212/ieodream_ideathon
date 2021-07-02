@@ -31,4 +31,8 @@ urlpatterns = [
     path('services/',views.services, name="services"),
     path('accounts/',include('allauth.urls')),
     path('mypage/',include('mypage.urls')),
+    path('dreamrelay/',views.dreamrelay, name="dreamrelay"),
+    path('story/',views.story, name="story"),
+    path('music/',views.music, name="music"),
+    path('illustration/',views.illustration, name="illustration"),
 ]

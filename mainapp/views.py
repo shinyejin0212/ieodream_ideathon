@@ -24,3 +24,15 @@ def portfolio(request):
 
 def services(request):
     return render(request, 'mainapp/services.html')
+
+def dreamrelay(request):
+    return render(request, 'mainapp/dreamrelay.html')
+
+def story(request):
+    return render(request, 'mainapp/story.html')
+
+def music(request):
+    return render(request, 'mainapp/music.html')
+
+def illustration(request):
+    return render(request, 'mainapp/illustration.html')
