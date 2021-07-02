@@ -16,6 +16,7 @@ Including another URLconf
 # from dreamproject.mainapp.views import blogsingle
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 from mainapp import views
 
 urlpatterns = [
@@ -28,4 +29,6 @@ urlpatterns = [
     path('portfoliosingle/',views.portfoliosingle, name="portfoliosingle"),
     path('portfolio/', views.portfolio, name="portfolio"),
     path('services/',views.services, name="services"),
+    path('accounts/',include('allauth.urls')),
+    path('mypage/',include('mypage.urls')),
 ]
