@@ -23,4 +23,3 @@ class PostD(models.Model):
     created_at = models.DateTimeField()
     text = models.TextField()
     image = models.ImageField(upload_to = 'postD/', blank = True, null = True)
-

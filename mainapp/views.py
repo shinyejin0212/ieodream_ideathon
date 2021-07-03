@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import PostS, PostD
 from django.utils import timezone
@@ -46,15 +47,17 @@ def library(request):
 
 def detailS(request,id):
     post = get_object_or_404(PostS, id = id)
-    return render(request,'mainapp/detailS.html', {'post':post})
+    all_comments = post.comments.all().order_by('created_at')
+    comment_count = post.comments.count()
+    return render(request,'mainapp/detailS.html', {'post':post, 'comments':all_comments, 'count':comment_count})
 
 def createS(request):
     new_post = PostS()
     new_post.title = request.POST['title']
-    new_post.writer = request.POST['writer']
+    new_post.writer = request.user
     new_post.pub_date = timezone.now()
     new_post.body = request.POST['body']
-    new_post.image = request.FILES['image']
+    new_post.image = request.FILES.get('image')
     new_post.save()
     return redirect('detailS',new_post.id)
 
@@ -68,9 +71,11 @@ def editS(request,id):
 def updateS(request,id):
     update_post = PostS.objects.get(id = id)
     update_post.title = request.POST['title']
-    update_post.writer = request.POST['writer']
+    update_post.writer = request.user
     update_post.pub_date = timezone.now()
     update_post.body = request.POST['body']
+    if request.FILES.get('image'):
+        update_post.image = request.FILES.get('image')
     update_post.save()
     return redirect('detailS',update_post.id)
 
