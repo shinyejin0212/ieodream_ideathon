@@ -14,7 +14,7 @@ def blogsingle(request):
     return render(request, 'mainapp/blog-single.html')
 
 def blog(request):
-    posts = PostD.objects.all()
+    posts = PostD.objects.all().order_by('-pub_date')
     return render(request, 'mainapp/blog.html',{'posts':posts})
 
 def contact(request):
