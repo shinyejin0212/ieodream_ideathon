@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div id="particles-js"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../static/images/배경사진.jpg);">
+        <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Contact</span></p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="ftco-section contact-section ftco-degree-bg">
+    <div class="container bg-light">
+      <div class="row d-flex mb-5 contact-info">
+        <div class="col-md-12 mb-4">
+          <h2 class="h4">이야기 수정하기</h2>
+        </div>
+        <div class="w-100"></div>
+      </div>
+      <div class="row block-9">
+        <div class="col-md-6 pr-md-5">
+            <form action="{% url 'updateD' post.id %}" method="post">
+                {%csrf_token%}
+                <p>제목 : <input type="text" name="title" value="{{post.title}}"></p>
+                <p>작성자 : <input type="text" name="writer" value="{{post.writer}}"></p>
+                <p>첨부파일 :</p>
+                <input type="file" name="image" onchange="fileCheck(this)">
+                {% if post.image %}
+                    <p>{{post.image_name}}</p>
+                {% endif %}
+                <p>내용 : <textarea type="text" name="text" id="" cols="30" rows="10">{{post.body}}</textarea></p>
+                <button type="submit">제출</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
