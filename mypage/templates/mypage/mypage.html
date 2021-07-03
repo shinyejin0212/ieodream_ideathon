@@ -2,15 +2,24 @@
 {% load static %}
 
 {% block content %}
-<style>
-    
-</style>
 <section style="margin:80px 30px 0px 30px;">
   <div class="container">
     {% if user.is_authenticated %}
-    <h2>
-      {{user.username}}
-    </h2>
+
+    <div class="hero-wrap js-fullheight">
+      <div class="overlay"></div>
+      <div id="particles-js"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../../static/images/배경사진.jpg); background-repeat: no-repeat; background-size: cover; ">
+          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 550;">{{user.username}}</h1>
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400;">" 나만의 꿈 기록 "</h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+      
     <br>
     {% else %}
     <div style="display:block; text-align: center; width:900px;margin: 300px auto; position:relative;">
@@ -19,6 +28,24 @@
       <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
       <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
     </div>
+    <!-- 카테고리 별 글작성 추가 될시 이름에 맞게 수정할예정  -->
+    <!-- <div class="MyData">
+      <div class="stroy">
+        <h1>나의 이야기</h1>
+        {% for stroy in storys %}
+          <a href="{% url 'main:stroy_detail' stroy.id %}">{{stroy.title}}</a><hr>
+        {%endfor%}
+      </div>
+      <div class="music">
+        <h1>나의 작곡</h1>
+        <a href="{% url 'main:music_detail' music.id %}">{{music.title}}</a><hr>
+      </div>
+      <div class="illustration">
+        <h1>나의 그림</h1>
+        <a href="{% url 'main:illustration_detail' illustration.id %}">{{illustration.title}}</a><hr>
+      </div>
+    </div> -->
+
 
     {% endif %}
 
