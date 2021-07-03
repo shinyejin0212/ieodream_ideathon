@@ -46,5 +46,12 @@ urlpatterns = [
     path('deleteS/<str:id>', views.deleteS, name="deleteS"),
     path('moana/', views.moana, name="moana"),
     path('Moonight/', views.Moonight, name="Moonight"),
+
+    path('newD/', views.newD, name="newD"),
+    path('createD/', views.createD, name="createD"),
+    path('editD/<str:id>', views.editD, name="editD"),
+    path('updateD/<str:id>', views.updateD, name="updateD"),
+    path('deleteD/<str:id>', views.deleteD, name="deleteD"),
+    path('detailD/<str:id>', views.detailD, name="detailD"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
