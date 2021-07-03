@@ -19,3 +19,10 @@ class PostS(models.Model):
 
     
 
+class PostD(models.Model):
+    id = models.AutoField(primary_key = True)
+    title = models.CharField(max_length = 200)
+    writer = models.CharField(max_length = 100)
+    created_at = models.DateTimeField()
+    text = models.TextField()
+    image = models.ImageField(upload_to = 'postD/', blank = True, null = True)
