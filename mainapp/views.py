@@ -1,6 +1,6 @@
 from django.http import request
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import PostS, CommentS
+from .models import PostS
 from django.utils import timezone
 
 # Create your views here.
