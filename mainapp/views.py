@@ -37,8 +37,8 @@ def story(request):
 def music(request):
     return render(request, 'mainapp/music.html')
 
-def drawing(request):
-    return render(request, 'mainapp/drawing.html')
+def illustration(request):
+    return render(request, 'mainapp/illustration.html')
 
 def library(request):
     return render(request, 'mainapp/library.html')
