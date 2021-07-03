@@ -22,9 +22,4 @@ class PostD(models.Model):
     writer = models.CharField(max_length = 100)
     created_at = models.DateTimeField()
     text = models.TextField()
-<<<<<<< HEAD
     image = models.ImageField(upload_to = 'postD/', blank = True, null = True)
-
-=======
-    image = models.ImageField(upload_to = 'postD/', blank = True, null = True)
->>>>>>> 4e927d8c12ac1b4cb17a47e49c8dbf94396c1026
