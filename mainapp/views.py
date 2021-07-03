@@ -32,7 +32,7 @@ def dreamrelay(request):
     return render(request, 'mainapp/dreamrelay.html')
 
 def story(request):
-    posts = PostS.objects.all().order_by('-pub_date')
+    posts = PostS.objects.all()
     return render(request, 'mainapp/story.html',{'posts':posts})
 
 def music(request):
