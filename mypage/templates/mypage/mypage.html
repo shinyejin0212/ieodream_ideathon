@@ -28,18 +28,21 @@
       <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
       <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
     </div>
+    <!-- 카테고리 별 글작성 추가 될시 이름에 맞게 수정할예정  -->
     <!-- <div class="MyData">
       <div class="stroy">
-        <h1>나의 </h1>
+        <h1>나의 이야기</h1>
         {% for stroy in storys %}
-          <a href="{% url 'main:detail' stroy.id %}">{{stroy.title}}</a><hr>
+          <a href="{% url 'main:stroy_detail' stroy.id %}">{{stroy.title}}</a><hr>
         {%endfor%}
       </div>
       <div class="music">
-
+        <h1>나의 작곡</h1>
+        <a href="{% url 'main:music_detail' music.id %}">{{music.title}}</a><hr>
       </div>
       <div class="illustration">
-
+        <h1>나의 그림</h1>
+        <a href="{% url 'main:illustration_detail' illustration.id %}">{{illustration.title}}</a><hr>
       </div>
     </div> -->
 
