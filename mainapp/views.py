@@ -48,13 +48,14 @@ def detailS(request,id):
     return render(request,'mainapp/detailS.html', {'post':post})
 
 def createS(request):
-	new_post = PostS()
-	new_post.title = request.POST['title']
-	new_post.writer = request.POST['writer']
-	new_post.pub_date = timezone.now()
-	new_post.body = request.POST['body']
-	new_post.save()
-	return redirect('detailS',new_post.id)
+    new_post = PostS()
+    new_post.title = request.POST['title']
+    new_post.writer = request.POST['writer']
+    new_post.pub_date = timezone.now()
+    new_post.body = request.POST['body']
+    new_post.image = request.FILES['image']
+    new_post.save()
+    return redirect('detailS',new_post.id)
 
 def newS(request):
     return render(request, 'mainapp/newS.html')
