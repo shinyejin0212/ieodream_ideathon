@@ -76,3 +76,9 @@ def deleteS(request, id):
     delete_post = PostS.objects.get(id = id)
     delete_post.delete()
     return redirect('story')
+
+def moana(request):
+    return render(request, 'mainapp/moana.html')
+
+def Moonight(request):
+    return render(request, 'mainapp/Moonight.html')

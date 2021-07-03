@@ -42,4 +42,6 @@ urlpatterns = [
     path('editS/<str:id>', views.editS, name="editS"),
     path('updateS/<str:id>', views.updateS, name="updateS"),
     path('deleteS/<str:id>', views.deleteS, name="deleteS"),
+    path('moana/', views.moana, name="moana"),
+    path('Moonight/', views.Moonight, name="Moonight"),
 ]
