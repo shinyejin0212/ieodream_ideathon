@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from mainapp import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,4 +44,5 @@ urlpatterns = [
     path('editS/<str:id>', views.editS, name="editS"),
     path('updateS/<str:id>', views.updateS, name="updateS"),
     path('deleteS/<str:id>', views.deleteS, name="deleteS"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

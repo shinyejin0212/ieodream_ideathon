@@ -24,7 +24,9 @@
             <img src="{% static 'images/image_6.jpg' %}" alt="" class="img-fluid">
           </p>
           <p>{{post.body}}</p>
-
+          {% if post.image %}
+            <p><img src="{{ post.image.url }}" alt="사진"></p>
+          {% endif %}
           <div class="pt-5 mt-5">
             <h3 class="mb-5">6 Comments</h3>
             <ul class="comment-list">
