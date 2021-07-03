@@ -36,3 +36,6 @@ def music(request):
 
 def illustration(request):
     return render(request, 'mainapp/illustration.html')
+
+def library(request):
+    return render(request, 'mainapp/library.html')

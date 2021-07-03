@@ -35,4 +35,5 @@ urlpatterns = [
     path('story/',views.story, name="story"),
     path('music/',views.music, name="music"),
     path('illustration/',views.illustration, name="illustration"),
+    path('library/', views.library, name="library"),
 ]
