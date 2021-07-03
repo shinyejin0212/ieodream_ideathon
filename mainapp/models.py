@@ -17,8 +17,6 @@ class PostS(models.Model):
     def summary(self):
         return self.body[:20]
 
-    
-
 class PostD(models.Model):
     id = models.AutoField(primary_key = True)
     title = models.CharField(max_length = 200)
