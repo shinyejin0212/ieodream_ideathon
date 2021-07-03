@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div id="particles-js"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../static/images/배경사진.jpg);">
+        <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span class="mr-2"><a href="{% url 'blog' %}">Blog</a></span> <span>Blog single</span></p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Blog</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="ftco-section ftco-degree-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ftco-animate">
+          <h2 class="mb-3">{{post.title}}</h2>
+          {% if post.image %}
+            <p><img src="{{ post.image.url }}" alt="사진"></p>
+          {% endif %}
+          <br>
+          <p>{{post.text}}</p>
+          <br>
+          <h5><a href="{% url 'editD' post.id %}">수정하기 </a><a href="{% url 'deleteD' post.id %}">삭제하기</a></h5>
+
+        </div> <!-- .col-md-8 -->
+        <div class="col-md-4 sidebar ftco-animate order-first">
+          <div class="sidebar-box ftco-animate">
+            <div class="categories">
+              
+              <!-- <li><a href="#">Dish <span>(22)</span></a></li>
+              <li><a href="#">Desserts <span>(37)</span></a></li>
+              <li><a href="#">Drinks <span>(42)</span></a></li>
+              <li><a href="#">Ocassion <span>(14)</span></a></li> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section> <!-- .section -->
+{% endblock %}
