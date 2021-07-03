@@ -25,15 +25,9 @@
       </div>
       <div class="row block-9">
         <div class="col-md-6 pr-md-5">
-            <form action="{% url 'updateS' post.id %}" method="post">
+            <form action="{% url 'update_commentS' post.id comment.id%}" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
-                <p>제목 : <input type="text" name="title" value="{{post.title}}"></p>
-                <p>첨부파일 :</p>
-                <input type="file" name="image" onchange="fileCheck(this)">
-                {% if post.image %}
-                    <p>{{post.image_name}}</p>
-                {% endif %}
-                <p>내용 : <textarea type="text" name="body" id="" cols="30" rows="10">{{post.body}}</textarea></p>
+                <p>내용 : <textarea type="text" name="content" id="" cols="30" rows="10">{{comment.content}}</textarea></p>
                 <button type="submit">제출</button>
             </form>
         </div>
