@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -15,6 +16,16 @@ class PostS(models.Model):
 
     def summary(self):
         return self.body[:20]
+        
+    def image_name(self):
+        return self.image.name
+
+class CommentS(models.Model):
+	content = models.TextField()
+	writer = models.ForeignKey(User, on_delete=models.CASCADE)
+	post = models.ForeignKey(PostS, on_delete=models.CASCADE, related_name='comments')
+	created_at = models.DateTimeField(auto_now_add = True)
+	updated_at = models.DateTimeField(auto_now = True)
 
 class PostD(models.Model):
     id = models.AutoField(primary_key = True)

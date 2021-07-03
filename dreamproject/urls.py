@@ -53,6 +53,10 @@ urlpatterns = [
     path('updateD/<str:id>', views.updateD, name="updateD"),
     path('deleteD/<str:id>', views.deleteD, name="deleteD"),
     path('detailD/<str:id>', views.detailD, name="detailD"),
+    path('create_comment/<str:post_id>', views.create_commentS, name="create_commentS"),
+    path('update_commentS/<str:post_id>/<str:comment_id>', views.update_commentS, name="update_commentS"),
+    path('edit_commentS/<str:post_id>/<str:comment_id>', views.edit_commentS, name="edit_commentS"),
+    path('deleteS/<str:post_id>/<str:comment_id>', views.delete_commentS, name="delete_commentS"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

@@ -1,6 +1,6 @@
 from django.http import request
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import PostS, PostD
+from .models import PostS, PostD, CommentS
 from django.utils import timezone
 
 # Create your views here.
@@ -83,6 +83,32 @@ def deleteS(request, id):
     delete_post = PostS.objects.get(id = id)
     delete_post.delete()
     return redirect('story')
+
+def create_commentS(request, post_id):
+	if request.method == "POST":
+		post = get_object_or_404(PostS, pk=post_id)
+		current_user = request.user
+		comment_content = request.POST.get('content')
+		CommentS.objects.create(content=comment_content, writer=current_user, post=post)
+	return redirect('detailS', post_id)
+
+def update_commentS(request, post_id, comment_id):
+    post = get_object_or_404(PostS, id = post_id)
+    update_comment = CommentS.objects.get(id = comment_id)
+    update_comment.content = request.POST['content']
+    update_comment.save()
+    return redirect('detailS',post.pk)
+
+def edit_commentS(request, post_id, comment_id):
+    post = get_object_or_404(PostS, id = post_id)
+    edit_comment = CommentS.objects.get(id = comment_id)
+    return render(request, 'mainapp/edit_commentS.html', {'post':post, 'comment' : edit_comment})
+
+def delete_commentS(request, post_id, comment_id):
+    post = get_object_or_404(PostS, pk=post_id)
+    comment = get_object_or_404(CommentS, pk=comment_id)
+    comment.delete()
+    return redirect('detailS', post.pk)
 
 def moana(request):
     return render(request, 'mainapp/moana.html')
