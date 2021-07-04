@@ -188,7 +188,7 @@ def music(request):
     posts = PostM.objects.all()
     return render(request, 'mainapp/music.html',{'posts':posts})
 
-def detailM(request,post_id):
+def detailM(request,id):
     post = get_object_or_404(PostM, id = id)
     all_comments = post.comments.all().order_by('created_at')
     comment_count = post.comments.count()
