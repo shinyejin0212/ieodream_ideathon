@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../static/images/배경사진.jpg); background-size: cover; background-repeat: no-repeat;">
         <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2">STORY</span> </p>
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2">DREAM DIARY</span> </p>
           <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">여러분의 소중한 꿈을 기록해보세요</h1><br><br>
           {%if user.is_authenticated%}
             <h3><span class="mr-2"><a href="{% url 'newD' %}">꿈 다이어리 작성하기</a></span> </h3>
@@ -25,7 +25,7 @@
         {% for post in posts %}
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">
-            <a href="{% url 'detailD' post.id %}" class="block-20" style="background-image: url('/static/images/글_2.jpg');"></a>
+            <a href="{% url 'detailD' post.id %}" class="block-20" style="background-image: url('/static/images/image_1.jpg');"></a>
             <div class="text p-4 d-block">
               <h3 class="heading"><a href="{% url 'detailD' post.id %}">{{post.title}}</a></h3>
               <div class="meta mb-3">
