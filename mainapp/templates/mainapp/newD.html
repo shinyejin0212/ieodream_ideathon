@@ -28,7 +28,7 @@
             <form action="{% url 'createD' %}" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
                 <p>제목 : <input type="text" name="title"></p>
-                <p>첨부파일 : <input type="file" name="image"></p>
+                <p>첨부파일 : <input type="file" name="image" onchange="fileCheck(this)"></p>
                 <p>내용 : <textarea type="text" name="text" id="" cols="90" rows="10"></textarea></p>
                 <button type="submit">제출</button>
             </form>

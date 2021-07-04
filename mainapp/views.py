@@ -14,7 +14,8 @@ def blogsingle(request):
     return render(request, 'mainapp/blog-single.html')
 
 def blog(request):
-    posts = PostD.objects.all().order_by('-created_at')
+    user = request.user
+    posts = PostD.objects.filter(writer = user).order_by('-created_at')
     return render(request, 'mainapp/blog.html',{'posts':posts})
 
 def contact(request):
@@ -187,7 +188,7 @@ def music(request):
     posts = PostM.objects.all()
     return render(request, 'mainapp/music.html',{'posts':posts})
 
-def detailM(request,id):
+def detailM(request,post_id):
     post = get_object_or_404(PostM, id = id)
     all_comments = post.comments.all().order_by('created_at')
     comment_count = post.comments.count()
@@ -274,7 +275,7 @@ def createD(request):
     new_post.writer = request.user
     new_post.created_at = timezone.now()
     new_post.text = request.POST['text']
-    new_post.image = request.FILES['image']
+    new_post.image = request.FILES.get('image')
     new_post.save()
     return redirect('detailD',new_post.id)
 

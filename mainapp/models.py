@@ -89,4 +89,4 @@ class PostD(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField()
     text = models.TextField()
-    image = models.ImageField(upload_to = 'postD/', null = True)
+    image = models.ImageField(upload_to = 'postD/', blank = True, null = True)
