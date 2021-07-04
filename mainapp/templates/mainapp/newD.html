@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../static/images/배경사진.jpg);">
         <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Contact</span></p>
+          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"></span></p>
           <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">꿈 다이어리 기록하기</h1>
         </div>
       </div>
@@ -28,7 +28,6 @@
             <form action="{% url 'createD' %}" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
                 <p>제목 : <input type="text" name="title"></p>
-                <p>작성자 : <input type="text" name="writer"></p>
                 <p>첨부파일 : <input type="file" name="image"></p>
                 <p>내용 : <textarea type="text" name="text" id="" cols="90" rows="10"></textarea></p>
                 <button type="submit">제출</button>
