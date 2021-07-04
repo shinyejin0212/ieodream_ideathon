@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
 
 # Create your models here.
 
 class PostS(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
-    writer = models.CharField(max_length=100)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'postS/', blank=True, null=True)

@@ -30,7 +30,7 @@
               <div class="meta mb-3">
                 <div><a href="{% url 'detailS' post.id %}">{{post.pub_date}}</a></div>
                 <div><a href="{% url 'detailS' post.id %}">{{post.writer}}</a></div>
-                <div><a href="{% url 'detailS' post.id %}" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                <!-- <div><a href="{% url 'detailS' post.id %}" class="meta-chat"><span class="icon-chat"></span> {{count}}</a></div> -->
               </div>
               <h3 class="heading"><a href="{% url 'detailS' post.id %}">{{post.title}}</a></h3>
             </div>
