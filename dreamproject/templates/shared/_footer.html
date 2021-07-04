@@ -1,31 +1,35 @@
-<footer class="ftco-footer ftco-bg-dark ftco-section" style="background-image: url(../../static/images/배경사진.jpg); background-size: 100%; background-size: cover; background-repeat: no-repeat;">
+<footer class="ftco-footer ftco-bg-dark ftco-section" style="background-image: url(../../static/images/배경사진.jpg); background-size: 100%; background-size: cover; background-repeat: no-repeat; padding-top: 50px; padding-bottom: 50px;">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md">
         <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">이어드림.</h2>
-          <p>누구나 한 번쯤 마음속에 품어봤을 꿈, 이어드림에서 펼쳐보세요</p>
+          <h2 class="ftco-heading-2" style="color: purple;">이어드림.</h2>
+          <p style="color: purple;">누구나 한 번쯤 마음속에 품어봤을 꿈, 이어드림에서 펼쳐보세요</p>
         </div>
       </div>
       <div class="col-md">
         <div class="ftco-footer-widget mb-4 ml-5">
-          <h2 class="ftco-heading-2">바로가기</h2>
-          <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">Home</a></li>
-            <li><a href="#" class="py-2 d-block">About</a></li>
-            <li><a href="#" class="py-2 d-block">꿈 도서관</a></li>
-            <li><a href="#" class="py-2 d-block">꿈 릴레이</a></li>
-            <li><a href="#" class="py-2 d-block">로그인</a></li>
+          <h2 class="ftco-heading-2" style="color: purple;">바로가기</h2>
+          <ul class="list-unstyled" >
+            <li><a href="{% url 'index' %}" class="py-2 d-block" style="color: purple;">Home</a></li>
+            <li><a href="{% url 'services' %}" class="py-2 d-block" style="color: purple;">About</a></li>
+            <li><a href="{% url 'library' %}" class="py-2 d-block" style="color: purple;">꿈 도서관</a></li>
+            <li><a href="{% url 'dreamrelay' %}" class="py-2 d-block" style="color: purple;">꿈 릴레이</a></li>
+            {%if user.is_authenticated%}
+            <li><a href="{% url 'account_logout' %}" class="py-2 d-block" style="color: purple;">로그아웃</a></li>
+            {% else %}
+            <li><a href="{% url 'account_login' %}" class="py-2 d-block" style="color: purple;">로그인</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
       <div class="col-md">
          <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">Contact Information</h2>
+          <h2 class="ftco-heading-2" style="color: purple;">Contact Information</h2>
           <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">동국대학교 멋쟁이사자처럼</a></li>
-            <li><a href="#" class="py-2 d-block">+ 1234 1234 </a></li>
-            <li><a href="#" class="py-2 d-block">shinyejin0212@likelion.org</a></li>
+            <li><a href="#" class="py-2 d-block" style="color: purple;">동국대학교 멋쟁이사자처럼</a></li>
+            <li><a href="#" class="py-2 d-block" style="color: purple;">+ 1234 1234 </a></li>
+            <li><a href="#" class="py-2 d-block" style="color: purple;">shinyejin0212@likelion.org</a></li>
           </ul>
         </div>
       </div>
@@ -42,8 +46,8 @@
     <div class="row">
       <div class="col-md-12 text-center">
 
-        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        <p style="color: purple;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!--script>document.write(new Date().getFullYear());</script--> 신예진 | 강동희 | 서희찬 | 이여원 | 정민경 | 정준홍  in <a href="https://colorlib.com" target="_blank" style="color: purple;">동대멋사<i class="icon-heart" aria-hidden="true"></i></a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
       </div>
     </div>
