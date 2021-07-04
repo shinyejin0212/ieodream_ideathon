@@ -25,20 +25,74 @@
           {% endif %}
           <br>
           <p>{{post.text}}</p>
-          <br>
-          <h5><a href="{% url 'editD' post.id %}">수정하기 </a><a href="{% url 'deleteD' post.id %}">삭제하기</a></h5>
-
         </div> <!-- .col-md-8 -->
         <div class="col-md-4 sidebar ftco-animate order-first">
+          <div class="sidebar-box">
+            <form action="#" class="search-form">
+              <div class="form-group">
+                <span class="icon fa fa-search"></span>
+                {{post.created_at}}
+                <!-- <input type="text" class="form-control" placeholder="Type a keyword and hit enter"> -->
+              </div>
+            </form>
+          </div>
+          {% if user == post.writer %}
           <div class="sidebar-box ftco-animate">
             <div class="categories">
-              
-              <!-- <li><a href="#">Dish <span>(22)</span></a></li>
-              <li><a href="#">Desserts <span>(37)</span></a></li>
-              <li><a href="#">Drinks <span>(42)</span></a></li>
-              <li><a href="#">Ocassion <span>(14)</span></a></li> -->
+              <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'editD' post.id %}">수정하기</a></button></h3>
+              <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'deleteD' post.id %}">삭제하기</a></button></h3>
+          </div>
+          {% endif %}
+
+          <div class="sidebar-box ftco-animate">
+            <h3>나의 다른 이야기</h3>
+            <div class="block-21 mb-4 d-flex">
+              <a class="blog-img mr-4" style="background-image: url(/static/images/image_4.jpg);"></a>
+              <div class="text">
+                <h3 class="heading"><a href="#">꿈 다이어리1</a></h3>
+                <div class="meta">
+                  <div><a><span class="icon-calendar"></span>{{post.created_at}}</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="block-21 mb-4 d-flex">
+              <a class="blog-img mr-4" style="background-image: url(/static/images/image_5.jpg);"></a>
+              <div class="text">
+                <h3 class="heading"><a href="#">꿈 다이어리2</a></h3>
+                <div class="meta">
+                  <div><a><span class="icon-calendar"></span>{{post.created_at}}</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="block-21 mb-4 d-flex">
+              <a class="blog-img mr-4" style="background-image: url(/static/images/image_6.jpg);"></a>
+              <div class="text">
+                <h3 class="heading"><a href="#">꿈 다이어리3</a></h3>
+                <div class="meta">
+                  <div><a><span class="icon-calendar"></span>{{post.created_at}}</a></div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div class="sidebar-box ftco-animate">
+            <!-- <h3>Tag Cloud</h3>
+            <div class="tagcloud">
+              <a href="#" class="tag-cloud-link">dish</a>
+              <a href="#" class="tag-cloud-link">menu</a>
+              <a href="#" class="tag-cloud-link">food</a>
+              <a href="#" class="tag-cloud-link">sweet</a>
+              <a href="#" class="tag-cloud-link">tasty</a>
+              <a href="#" class="tag-cloud-link">delicious</a>
+              <a href="#" class="tag-cloud-link">desserts</a>
+              <a href="#" class="tag-cloud-link">drinks</a>
+            </div> -->
+          </div>
+
+          <!-- <div class="sidebar-box ftco-animate">
+            <h3>Paragraph</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+          </div> -->
         </div>
 
       </div>
