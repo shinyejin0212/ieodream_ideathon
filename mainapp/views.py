@@ -271,7 +271,7 @@ def detailD(request,id):
 def createD(request):
     new_post = PostD()
     new_post.title = request.POST['title']
-    new_post.writer = request.POST['writer']
+    new_post.writer = request.user
     new_post.created_at = timezone.now()
     new_post.text = request.POST['text']
     new_post.image = request.FILES['image']
@@ -285,7 +285,7 @@ def editD(request,id):
 def updateD(request,id):
     update_post = PostD.objects.get(id = id)
     update_post.title = request.POST['title']
-    update_post.writer = request.POST['writer']
+    update_post.writer = request.user
     update_post.created_at = timezone.now()
     update_post.text = request.POST['text']
     update_post.save()

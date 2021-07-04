@@ -22,11 +22,12 @@
         {% for post in posts %}
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">
-            <a href="{% url 'detailD' post.id %}" class="block-20" style="background-image: url('/static/images/image_1.jpg');">
-            </a>
+            <a href="{% url 'detailD' post.id %}" class="block-20" style="background-image: url('/static/images/글_2.jpg');"></a>
             <div class="text p-4 d-block">
               <div class="meta mb-3">
-                <div><h6>{{post.created_at}}</h6></div>
+                <div><a href="{% url 'detailD' post.id %}">{{post.pub_date}}</a></div>
+                <div><a href="{% url 'detailD' post.id %}">{{post.writer}}</a></div>
+                <!-- <div><a href="{% url 'detailS' post.id %}" class="meta-chat"><span class="icon-chat"></span> {{count}}</a></div> -->
               </div>
               <h3 class="heading"><a href="{% url 'detailD' post.id %}">{{post.title}}</a></h3>
             </div>
