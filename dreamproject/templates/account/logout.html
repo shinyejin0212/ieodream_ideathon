@@ -2,7 +2,7 @@
 {% load static %} 
 {% load i18n %} 
 {% block content %}
-<div class="hero-wrap js-fullheight">
+<div class="hero-wrap js-fullheight" >
   <div class="overlay"></div>
   <div id="particles-js"></div>
   <div class="container">
@@ -18,7 +18,7 @@
                 <br>
                 {% csrf_token %} {{ form.as_p }}
                 <div class="logout-btn">
-                  <input type="submit" class="upload-btn" value="Logout" style="background: rgba(194, 180, 255, 0.774); color: whitesmoke; border-radius: 20%; border: none;" />
+                  <input type="submit" class="upload-btn" value="Logout" style="background: rgba(194, 180, 255, 0.774); color: whitesmoke; border-radius: 12%; border: none; padding: 5px 30px;" />
                 </div>
               </form>
             </div>

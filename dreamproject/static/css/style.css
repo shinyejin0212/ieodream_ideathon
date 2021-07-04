@@ -40,6 +40,9 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+.my_title{
+  font-weight: 700;
+  }
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -69,7 +72,7 @@ body {
 
 hr {
   -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+  box-sizing: content-boxx;
   height: 0;
   overflow: visible; }
 
@@ -8995,3 +8998,4 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
