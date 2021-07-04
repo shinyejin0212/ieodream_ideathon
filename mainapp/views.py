@@ -32,10 +32,6 @@ def services(request):
 def dreamrelay(request):
     return render(request, 'mainapp/dreamrelay.html')
 
-def story(request):
-    posts = PostD.objects.all()
-    return render(request, 'mainapp/story.html',{'posts':posts})
-
 def music(request):
     return render(request, 'mainapp/music.html')
 
@@ -44,6 +40,12 @@ def illustration(request):
 
 def library(request):
     return render(request, 'mainapp/library.html')
+
+# dreamrelay_story start
+
+def story(request):
+    posts = PostS.objects.all()
+    return render(request, 'mainapp/story.html',{'posts':posts})
 
 def detailS(request,id):
     post = get_object_or_404(PostS, id = id)
@@ -109,6 +111,8 @@ def delete_commentS(request, post_id, comment_id):
     comment = get_object_or_404(CommentS, pk=comment_id)
     comment.delete()
     return redirect('detailS', post.pk)
+
+#dreamrelay_story end
 
 def moana(request):
     return render(request, 'mainapp/moana.html')
