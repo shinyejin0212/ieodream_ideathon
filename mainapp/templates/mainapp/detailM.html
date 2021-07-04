@@ -50,7 +50,7 @@
             <!-- END comment-list -->
             
             <div class="comment-form-wrap pt-5">
-              <h3 class="mb-5">다음 스토리를 작성해 주세요!!</h3>
+              <h3 class="mb-5">다음에 이어질 음악을 작성해 주세요!!</h3>
               {%if user.is_authenticated%}
               <form action="{% url 'create_commentM' post.id %}" method="POST" class="p-5 bg-light">
                 {%csrf_token%}
@@ -88,7 +88,7 @@
           {% endif %}
 
           <div class="sidebar-box ftco-animate">
-            <h3>작성자의 다른 이야기</h3>
+            <h3>작성자의 다른 음악</h3>
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(/static/images/image-1.jpg);"></a>
               <div class="text">
