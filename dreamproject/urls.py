@@ -38,12 +38,40 @@ urlpatterns = [
     path('music/',views.music, name="music"),
     path('illustration/',views.illustration, name="illustration"),
     path('library/', views.library, name="library"),
+
     path('detailS/<str:id>', views.detailS, name="detailS"),
     path('newS/', views.newS, name="newS"),
     path('createS/', views.createS, name="createS"),
     path('editS/<str:id>', views.editS, name="editS"),
     path('updateS/<str:id>', views.updateS, name="updateS"),
     path('deleteS/<str:id>', views.deleteS, name="deleteS"),
+    path('create_commentS/<str:post_id>', views.create_commentS, name="create_commentS"),
+    path('update_commentS/<str:post_id>/<str:comment_id>', views.update_commentS, name="update_commentS"),
+    path('edit_commentS/<str:post_id>/<str:comment_id>', views.edit_commentS, name="edit_commentS"),
+    path('deleteS/<str:post_id>/<str:comment_id>', views.delete_commentS, name="delete_commentS"),
+
+    path('detailI/<str:id>', views.detailI, name="detailI"),
+    path('newI/', views.newI, name="newI"),
+    path('createI/', views.createI, name="createI"),
+    path('editI/<str:id>', views.editI, name="editI"),
+    path('updateI/<str:id>', views.updateI, name="updateI"),
+    path('deleteI/<str:id>', views.deleteI, name="deleteI"),
+    path('create_commentI/<str:post_id>', views.create_commentI, name="create_commentI"),
+    path('update_commentI/<str:post_id>/<str:comment_id>', views.update_commentI, name="update_commentI"),
+    path('edit_commentI/<str:post_id>/<str:comment_id>', views.edit_commentI, name="edit_commentI"),
+    path('deleteI/<str:post_id>/<str:comment_id>', views.delete_commentI, name="delete_commentI"),
+
+    path('detailM/<str:id>', views.detailM, name="detailM"),
+    path('newM/', views.newM, name="newM"),
+    path('createM/', views.createM, name="createM"),
+    path('editM/<str:id>', views.editM, name="editM"),
+    path('updateM/<str:id>', views.updateM, name="updateM"),
+    path('deleteM/<str:id>', views.deleteM, name="deleteM"),
+    path('create_commentM/<str:post_id>', views.create_commentM, name="create_commentM"),
+    path('update_commentM/<str:post_id>/<str:comment_id>', views.update_commentM, name="update_commentM"),
+    path('edit_commentM/<str:post_id>/<str:comment_id>', views.edit_commentM, name="edit_commentM"),
+    path('deleteM/<str:post_id>/<str:comment_id>', views.delete_commentM, name="delete_commentM"),
+
     path('moana/', views.moana, name="moana"),
     path('Moonight/', views.Moonight, name="Moonight"),
 
@@ -53,10 +81,6 @@ urlpatterns = [
     path('updateD/<str:id>', views.updateD, name="updateD"),
     path('deleteD/<str:id>', views.deleteD, name="deleteD"),
     path('detailD/<str:id>', views.detailD, name="detailD"),
-    path('create_comment/<str:post_id>', views.create_commentS, name="create_commentS"),
-    path('update_commentS/<str:post_id>/<str:comment_id>', views.update_commentS, name="update_commentS"),
-    path('edit_commentS/<str:post_id>/<str:comment_id>', views.edit_commentS, name="edit_commentS"),
-    path('deleteS/<str:post_id>/<str:comment_id>', views.delete_commentS, name="delete_commentS"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
