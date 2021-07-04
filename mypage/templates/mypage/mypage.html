@@ -14,13 +14,80 @@
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 550;">{{user.username}}</h1>
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400;">" 나만의 꿈 기록 "</h1>
-            
           </div>
         </div>
       </div>
     </div>
-      
-    <br>
+    <div class="myList">
+
+    
+      <div class="story">
+        <h1 class="my_title">내가 작성한 이야기</h1>
+          <!-- 게시글 나열하는 프론트  -->
+          <div class="row">
+            {% for story in storys %}
+            <div class="col-md-4 ftco-animate">
+              <div class="blog-entry">
+                <a href="{% url 'detailS' story.id %}" class="block-20" style="background-image: url('/static/images/글_2.jpg');"></a>
+                <div class="text p-4 d-block">
+                  <div class="meta mb-3">
+                    <div><a href="{% url 'detailS' story.id %}">{{story.pub_date}}</a></div>
+                    <div><a href="{% url 'detailS' story.id %}">{{story.writer}}</a></div>
+                  </div>
+                  <h3 class="heading"><a href="{% url 'detailS' story.id %}">{{story.title}}</a></h3>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="illustration">
+        <h1 class="my_title">내가 그린 그림</h1>
+        <div class="row">
+          {% for illustration in illustrations %}
+          <div class="col-md-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="{% url 'detailS' illustration.id %}" class="block-20" style="background-image: url('/static/images/그림_2.png');"></a>
+              <div class="text p-4 d-block">
+                <div class="meta mb-3">
+                  <div><a href="{% url 'detailS' illustration.id %}">{{illustration.pub_date}}</a></div>
+                  <div><a href="{% url 'detailS' illustration.id %}">{{illustration.writer}}</a></div>
+                </div>
+                <h3 class="heading"><a href="{% url 'detailS' illustration.id %}">{{illustration.title}}</a></h3>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="music">
+        <h1 class="my_title">내가 작곡한 음악</h1>
+        <div class="row">
+          {% for music in musics %}
+          <div class="col-md-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="{% url 'detailS' music.id %}" class="block-20" style="background-image: url('/static/images/음악_4.jpg');"></a>
+              <div class="text p-4 d-block">
+                <div class="meta mb-3">
+                  <div><a href="{% url 'detailS' music.id %}">{{music.pub_date}}</a></div>
+                  <div><a href="{% url 'detailS' music.id %}">{{music.writer}}</a></div>
+                </div>
+                <h3 class="heading"><a href="{% url 'detailS' music.id %}">{{music.title}}</a></h3>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+    
+    
     {% else %}
     <div style="display:block; text-align: center; width:900px;margin: 300px auto; position:relative;">
       <h3>로그인 후 이용 가능</h3>
@@ -29,6 +96,9 @@
       <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
     </div>
     <!-- 카테고리 별 글작성 추가 될시 이름에 맞게 수정할예정  -->
+
+    
+    
     <!-- <div class="MyData">
       <div class="stroy">
         <h1>나의 이야기</h1>
