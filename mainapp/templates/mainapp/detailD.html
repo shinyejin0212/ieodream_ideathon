@@ -39,6 +39,7 @@
           {% if user == post.writer %}
           <div class="sidebar-box ftco-animate">
             <div class="categories">
+              <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'blog' %}">다이어리 목록</a></button></h3>
               <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'editD' post.id %}">수정하기</a></button></h3>
               <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'deleteD' post.id %}">삭제하기</a></button></h3>
           </div>
