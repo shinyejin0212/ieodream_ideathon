@@ -39,8 +39,13 @@
                   <h3>작성자 : {{comment.writer}}</h3>
                   <div class="meta">{{comment.created_at}}</div>
                   <p>{{comment.content}}</p><br>
+                  <!-- 댓글수정은 댓글 작성자만, 댓글삭제는 댓글작성자와 게시물작성가 할 수 있도록! -->
                   {% if user == comment.writer %}
                   <p><button type="button" class="btn btn-outline-info"><a href="{% url 'edit_commentS' post.id comment.id %}">수정하기</a></button></p>
+                  {% endif %}
+                  {% if user == post.writer %}
+                  <p><button type="button" class="btn btn-outline-info"><a href="{% url 'delete_commentS' post.id comment.id %}">삭제하기</a></button></p>
+                  {% elif user == comment.writer %}
                   <p><button type="button" class="btn btn-outline-info"><a href="{% url 'delete_commentS' post.id comment.id %}">삭제하기</a></button></p>
                   {% endif %}
                 </div>
