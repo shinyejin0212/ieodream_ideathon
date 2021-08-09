@@ -6,6 +6,12 @@
   .my_title{
     font-weight: 600;
   }
+  .round{
+    width: 150px;
+    height: 150px; 
+    border-radius: 70%;
+    overflow: hidden;
+  }
 </style>
 <section style="margin:80px 30px 0px 30px;">
   <div class="container">
@@ -18,8 +24,36 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../../static/images/배경사진.jpg); background-repeat: no-repeat; background-size: cover; ">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 550;">{{user.username}}</h1>
+            
+            {% if user.profile.bio %}
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400;">" {{user.profile.bio}} "</h1>
+            {% else %}
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400;">" 나만의 꿈 기록 "</h1>
+            {% endif %}
+
+<div class="row" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+  <div class="col-xs-6 col-md-3">
+      {% if user.profile.profile_photo %}
+      <img class="round" src="{{user.profile.profile_photo.url}}" width="200"> <br>
+      {% else %}
+      <img class="round" src="{% static './../static/images/글_2.jpg' %}" width="200"> <br>
+      {% endif %}
+  </div>
+
+  <div class="col-xs-6 col-md-3 "data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+    <!-- user -->
+      <h3 style="color: white;"> ID : {{user.username}} </h3><br>
+          {% if user.first_name is not None %}
+            <h2 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400; color: rgb(139, 139, 139);" >이름:{{user.last_name}}{{user.first_name}} </h2>
+          {% endif %}
+      {% if user %}   <!-- 로그인한 사용자와 user(프로필 소유자)가 일치할 때만 프로필 편집이 가능하도록 함 -->
+        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default">프로필 편집</button></a></h2></a>
+      {% endif %}
+  </div>
+</div>
           </div>
+          
+
         </div>
       </div>
     </div>
@@ -29,6 +63,7 @@
       <div class="story">
         <i class="fas fa-feather-alt fa-2x"></i>
         <h1 class="my_title">내가 작성한 이야기</h1>
+        {{ user.profile.user }}
           <!-- 게시글 나열하는 프론트  -->
           <div class="row">
             {% for story in storys %}
