@@ -43,11 +43,12 @@
   <div class="col-xs-6 col-md-3 "data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
     <!-- user -->
       <h3 style="color: white;"> ID : {{user.username}} </h3><br>
-          {% if user.first_name is not None %}
+          <!-- {% if user.first_name is not None %}
             <h2 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400; color: rgb(139, 139, 139);" >이름:{{user.last_name}}{{user.first_name}} </h2>
-          {% endif %}
-      {% if user %}   <!-- 로그인한 사용자와 user(프로필 소유자)가 일치할 때만 프로필 편집이 가능하도록 함 -->
-        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default">프로필 편집</button></a></h2></a>
+          {% endif %} -->
+
+      {% if user %} 
+        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default" style="background-color:rgba(194, 180, 255, 0.774); color: whitesmoke;">프로필 편집</button></a></h2></a>
       {% endif %}
   </div>
 </div>
@@ -63,7 +64,6 @@
       <div class="story">
         <i class="fas fa-feather-alt fa-2x"></i>
         <h1 class="my_title">내가 작성한 이야기</h1>
-        {{ user.profile.user }}
           <!-- 게시글 나열하는 프론트  -->
           <div class="row">
             {% for story in storys %}
