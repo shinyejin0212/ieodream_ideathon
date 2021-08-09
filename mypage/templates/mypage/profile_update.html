@@ -2,8 +2,18 @@
 {% load static %}
 
 {% block content %}
+<style>
+    body{
+        background-image: url(../../static/images/배경사진.jpg);
+    }
+    input{
+        background-color:rgb(205, 196, 253); 
+        color: whitesmoke;
+        border: none;
+    }
 
-<h1 style="margin-top: 150px; text-align: center;">{{user.username}} 프로필 업데이트</h1>
+</style>
+<h1 style="margin-top: 150px; text-align: center; color: whitesmoke; font-weight: 500;">{{user.username}} 프로필 업데이트</h1>
 
     {% if error_msg %}
     <div class="alert alert-warning alert-dismissible" role="alert">
@@ -12,7 +22,7 @@
     </div>
     {% endif %}
 
-    <form action="" method="post" enctype="multipart/form-data" style="text-align: center;">{% csrf_token %}
+    <form action="" method="post" enctype="multipart/form-data" style="text-align: center; color: rgb(255, 255, 255); font-weight: 500; ">{% csrf_token %}
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
     <input type="submit" value="Update" />
