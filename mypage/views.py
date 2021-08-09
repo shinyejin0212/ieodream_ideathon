@@ -35,10 +35,7 @@ class ProfileView(DetailView):
 class ProfileUpdateView(View):
     def get(self, request):
         user = get_object_or_404(User, pk=request.user.pk)  # 로그인중인 사용자 객체를 얻어옴
-        # user_form = UserForm(initial={
-        #     'first_name': user.first_name,
-        #     'last_name': user.last_name,
-        # })
+
 
         if hasattr(user, 'profile'):  # user가 profile을 가지고 있으면 True, 없으면 False (회원가입을 한다고 profile을 가지고 있진 않으므로)
             profile = user.profile
@@ -52,11 +49,6 @@ class ProfileUpdateView(View):
         return render(request, 'mypage/profile_update.html', { "profile_form": profile_form})
     def post(self, request):
         u = User.objects.get(id=request.user.pk)        
-        # user_form = UserForm(request.POST, instance=u) 
-
-        # User 폼
-        # if user_form.is_valid():
-        #     user_form.save()
 
         if hasattr(u, 'profile'):
             profile = u.profile
