@@ -1,6 +1,6 @@
 from django.http import request
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import CommentI, CommentM, PostS, PostD, CommentS, PostI, PostM, BlogS, BlogI, BlogM
+from .models import CommentI, CommentM, PostS, PostD, CommentS, PostI, PostM, BlogS, BlogI, BlogM, Shop, Comment_sh
 from django.utils import timezone
 
 # Create your views here.
@@ -361,3 +361,66 @@ def deleteML(request, id):
     delete_post = BlogM.objects.get(id = id)
     delete_post.delete()
     return redirect('library')
+
+#꿈거래소
+def shop(request):
+    products = Shop.objects.all()
+    return render(request, 'mainapp/shop.html', {'products':products})
+
+def detail_shop(request, id):
+    product = get_object_or_404(Shop, id = id)
+    all_comments = product.comment_sh.all().order_by('created_at')
+    return render(request, 'mainapp/detail_shop.html', {'product':product, 'comment_sh':all_comments})
+
+def new_shop(request):
+    return render(request, 'mainapp/new_shop.html')
+
+def create_shop(request):
+    new_product = Shop()
+    new_product.title = request.POST['title']
+    new_product.writer = request.user
+    new_product.pub_date = timezone.now()
+    new_product.body = request.POST['body']
+    new_product.save()
+    return redirect('detail_shop', new_product.id)
+
+def edit_shop(request, id):
+    edit_product = Shop.objects.get(id = id)
+    return render(request, 'mainapp/edit_shop.html', {'product' : edit_product})
+
+def update_shop(request, id):
+    update_product = Shop.objects.get(id=id)
+    update_product.title = request.POST['title']
+    update_product.writer = request.user
+    update_product.pub_date = timezone.now()
+    update_product.body = request.POST['body']
+    update_product.save()
+    return redirect('detail_shop', update_product.id)
+
+def delete_shop(request, id):
+    delete_product = Shop.objects.get(id = id)
+    delete_product.delete()
+    return redirect('shop')
+
+def create_comment_sh(request, product_id):
+    if request.method == "POST":
+        product = get_object_or_404(Shop, pk=product_id)
+        current_user = request.user
+        comment_content = request.POST.get('content')
+        Comment_sh.objects.create(content=comment_content, writer=current_user, product=product)
+    return redirect('detail_shop', product_id)
+
+def edit_comment_sh(request, comment_id):
+    edit_comment_sh = Comment_sh.objects.get(id=comment_id)
+    return render(request, 'mainapp/edit_comment_sh.html', {'comment':edit_comment_sh})
+
+def update_comment_sh(request, comment_id):
+    update_comment = Comment_sh.objects.get(id=comment_id)
+    update_comment.content = request.POST.get('content')
+    update_comment.save()
+    return redirect('detail_shop', update_comment.product_id)
+
+def delete_comment_sh(request, comment_id):
+    delete_comment = Comment_sh.objects.get(id = comment_id)
+    delete_comment.delete()
+    return redirect('shop')

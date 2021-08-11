@@ -21,6 +21,7 @@ from mainapp import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
@@ -91,6 +92,20 @@ urlpatterns = [
     path('createML/<str:id>', views.createML, name="createML"),
     path('detailML/<str:id>', views.detailML, name="detailML"),
     path('deleteML/<str:id>', views.deleteML, name="deleteML"),
+
+    path('shop/', views.shop, name="shop"),
+    path('detail_shop/<str:id>', views.detail_shop, name="detail_shop"),
+    path('new_shop/', views.new_shop, name="new_shop"),
+    path('create_shop/', views.create_shop, name="create_shop"),
+    path('edit_shop/<str:id>', views.edit_shop, name="edit_shop"),
+    path('update_shop/<str:id>', views.update_shop, name="update_shop"),
+    path('delete_shop/<str:id>', views.delete_shop, name="delete_shop"),
+    path('<str:product_id>/create_comment_sh', views.create_comment_sh, name="create_comment_sh"),
+    path('edit_comment_sh/<str:comment_id>', views.edit_comment_sh, name="edit_comment_sh"),
+    path('update_comment_sh/<str:comment_id>', views.update_comment_sh, name="update_comment_sh"),
+    path('delete_comment_sh/<str:comment_id>', views.delete_comment_sh, name="delete_comment_sh"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 
 

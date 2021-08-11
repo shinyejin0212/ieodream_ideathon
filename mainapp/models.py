@@ -143,3 +143,21 @@ class BlogI(models.Model):
         
     def image_name(self):
         return self.image.name
+
+#꿈거래소
+class Shop(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=200)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField()
+    body = models.TextField()
+
+    def summary(self):
+        return self.body[:20]
+
+class Comment_sh(models.Model):
+    content = models.TextField()
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Shop, on_delete=models.CASCADE, related_name='comment_sh')
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
