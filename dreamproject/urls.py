@@ -81,6 +81,16 @@ urlpatterns = [
     path('updateD/<str:id>', views.updateD, name="updateD"),
     path('deleteD/<str:id>', views.deleteD, name="deleteD"),
     path('detailD/<str:id>', views.detailD, name="detailD"),
+
+    path('createSL/<str:id>', views.createSL, name="createSL"),
+    path('detailSL/<str:id>', views.detailSL, name="detailSL"),
+    path('deleteSL/<str:id>', views.deleteSL, name="deleteSL"),
+    path('createIL/<str:id>', views.createIL, name="createIL"),
+    path('detailIL/<str:id>', views.detailIL, name="detailIL"),
+    path('deleteIL/<str:id>', views.deleteIL, name="deleteIL"),
+    path('createML/<str:id>', views.createML, name="createML"),
+    path('detailML/<str:id>', views.detailML, name="detailML"),
+    path('deleteML/<str:id>', views.deleteML, name="deleteML"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
