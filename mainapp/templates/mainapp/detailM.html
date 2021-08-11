@@ -89,6 +89,7 @@
             <div class="categories">
               <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'editM' post.id %}">수정하기</a></button></h3>
               <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'deleteM' post.id %}">삭제하기</a></button></h3>
+              <h3><button type="button" class="btn btn-outline-info"><a href="{% url 'createML' post.id %}">작품 완성하기</a></button></h3>
           </div>
           {% endif %}
 
