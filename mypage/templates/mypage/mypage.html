@@ -107,13 +107,13 @@
           {% for illustration in illustrations %}
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="{% url 'detailS' illustration.id %}" class="block-20" style="background-image: url('/static/images/그림_2.png');"></a>
+              <a href="{% url 'detailI' illustration.id %}" class="block-20" style="background-image: url('/static/images/그림_2.png');"></a>
               <div class="text p-4 d-block">
                 <div class="meta mb-3">
-                  <div><a href="{% url 'detailS' illustration.id %}">{{illustration.pub_date}}</a></div>
-                  <div><a href="{% url 'detailS' illustration.id %}">{{illustration.writer}}</a></div>
+                  <div><a href="{% url 'detailI' illustration.id %}">{{illustration.pub_date}}</a></div>
+                  <div><a href="{% url 'detailI' illustration.id %}">{{illustration.writer}}</a></div>
                 </div>
-                <h3 class="heading"><a href="{% url 'detailS' illustration.id %}">{{illustration.title}}</a></h3>
+                <h3 class="heading"><a href="{% url 'detailI' illustration.id %}">{{illustration.title}}</a></h3>
               </div>
             </div>
           </div>
@@ -130,13 +130,13 @@
           {% for music in musics %}
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="{% url 'detailS' music.id %}" class="block-20" style="background-image: url('/static/images/음악_4.jpg');"></a>
+              <a href="{% url 'detailM' music.id %}" class="block-20" style="background-image: url('/static/images/음악_4.jpg');"></a>
               <div class="text p-4 d-block">
                 <div class="meta mb-3">
-                  <div><a href="{% url 'detailS' music.id %}">{{music.pub_date}}</a></div>
-                  <div><a href="{% url 'detailS' music.id %}">{{music.writer}}</a></div>
+                  <div><a href="{% url 'detailM' music.id %}">{{music.pub_date}}</a></div>
+                  <div><a href="{% url 'detailM' music.id %}">{{music.writer}}</a></div>
                 </div>
-                <h3 class="heading"><a href="{% url 'detailS' music.id %}">{{music.title}}</a></h3>
+                <h3 class="heading"><a href="{% url 'detailM' music.id %}">{{music.title}}</a></h3>
               </div>
             </div>
           </div>
