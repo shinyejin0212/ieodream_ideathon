@@ -20,6 +20,8 @@
       <div class="row">
         <div class="col-md-8 ftco-animate">
           <h2 class="mb-3">{{illust.title}}</h2>
+          작성자 : <a href="{% url 'mypage:mypage' post.writer.id %}">{{post.writer}}</a>
+
             {% if illust.image %}
                 <p><img src="{{ illust.image.url }}" alt="사진" class="img-fluid"></p>
             {% else %}

@@ -20,6 +20,8 @@
       <div class="row">
         <div class="col-md-8 ftco-animate">
           <h2 class="mb-3">{{post.title}}</h2>
+          작성자 : <a href="{% url 'mypage:mypage' post.writer.id %}">{{post.writer}}</a>
+
           {% if post.image %}
             <p><img src="{{ post.image.url }}", width ="480", height = "480", alt="사진"></p>
           {% endif %}

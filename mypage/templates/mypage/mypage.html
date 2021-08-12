@@ -36,20 +36,41 @@
       {% if user.profile.profile_photo %}
       <img class="round" src="{{user.profile.profile_photo.url}}" width="200"> <br>
       {% else %}
-      <img class="round" src="{% static './../static/images/글_2.jpg' %}" width="200"> <br>
+      <img class="round" src="{% static './../static/images/프로필기본이미지.png' %}" width="200"> <br>
       {% endif %}
   </div>
-
+  <div class="followButton">
+    {% if request.user != user %}
+      {% if request.user.profile in user.profile.followers.all %}
+          <a href="{%url 'mypage:follow' user.id %}" style="color: white;"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
+      {% else %}
+        <a href="{%url 'mypage:follow' user.id %} " style="color: white;" ><button type="button" class="btn btn-info">팔로우</button></a> {% endif %}
+    {% endif %}
+    {% if request.user == user %}
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+    {% endif %}
+  </div>
   <div class="col-xs-6 col-md-3 "data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
     <!-- user -->
-      <h3 style="color: white;"> ID:{{user.username}} </h3><br>
+
+      <div class="container">
+        <div class="follows">
+          <p style="color: white; font-weight: 500;">follower: {{user.profile.followers.count}}</p> 
+          {%for follower in user.profile.followers.all %}
+            <a href="{% url 'mypage:mypage' follower.user.id %}">{{follower.user.username}}</a> 
+          {% endfor %}
+            <p style="color: white; font-weight: 500;">following: {{user.profile.followings.count}}</p>
+          {% for following in user.profile.followings.all %}
+            <a href="{%url 'mypage:mypage' following.user.id%}">{{following.user.username}}</a>
+          {% endfor %}
+        </div>
       {% if user %} 
-        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default" style="background-color:rgba(194, 180, 255, 0.774); color: whitesmoke;">프로필 편집</button></a></h2></a>
+        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default" style="background-color:rgba(194, 180, 255, 0.774); color: whitesmoke; margin-top: 30px;">프로필 편집</button></a></h2></a>
       {% endif %}
   </div>
 </div>
           </div>
-          
+          </div>
 
         </div>
       </div>
@@ -88,13 +109,13 @@
           {% for illustration in illustrations %}
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="{% url 'detailS' illustration.id %}" class="block-20" style="background-image: url('/static/images/그림_2.png');"></a>
+              <a href="{% url 'detailI' illustration.id %}" class="block-20" style="background-image: url('/static/images/그림_2.png');"></a>
               <div class="text p-4 d-block">
                 <div class="meta mb-3">
-                  <div><a href="{% url 'detailS' illustration.id %}">{{illustration.pub_date}}</a></div>
-                  <div><a href="{% url 'detailS' illustration.id %}">{{illustration.writer}}</a></div>
+                  <div><a href="{% url 'detailI' illustration.id %}">{{illustration.pub_date}}</a></div>
+                  <div><a href="{% url 'detailI' illustration.id %}">{{illustration.writer}}</a></div>
                 </div>
-                <h3 class="heading"><a href="{% url 'detailS' illustration.id %}">{{illustration.title}}</a></h3>
+                <h3 class="heading"><a href="{% url 'detailI' illustration.id %}">{{illustration.title}}</a></h3>
               </div>
             </div>
           </div>
@@ -111,13 +132,13 @@
           {% for music in musics %}
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="{% url 'detailS' music.id %}" class="block-20" style="background-image: url('/static/images/음악_4.jpg');"></a>
+              <a href="{% url 'detailM' music.id %}" class="block-20" style="background-image: url('/static/images/음악_4.jpg');"></a>
               <div class="text p-4 d-block">
                 <div class="meta mb-3">
-                  <div><a href="{% url 'detailS' music.id %}">{{music.pub_date}}</a></div>
-                  <div><a href="{% url 'detailS' music.id %}">{{music.writer}}</a></div>
+                  <div><a href="{% url 'detailM' music.id %}">{{music.pub_date}}</a></div>
+                  <div><a href="{% url 'detailM' music.id %}">{{music.writer}}</a></div>
                 </div>
-                <h3 class="heading"><a href="{% url 'detailS' music.id %}">{{music.title}}</a></h3>
+                <h3 class="heading"><a href="{% url 'detailM' music.id %}">{{music.title}}</a></h3>
               </div>
             </div>
           </div>

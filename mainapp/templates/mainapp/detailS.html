@@ -20,6 +20,7 @@
       <div class="row">
         <div class="col-md-8 ftco-animate">
           <h2 class="mb-3">{{post.title}}</h2>
+          작성자 : <a href="{% url 'mypage:mypage' post.writer.id %}">{{post.writer}}</a>
             {% if post.image %}
                 <p><img src="{{ post.image.url }}" alt="사진" class="img-fluid"></p>
             {% else %}
@@ -27,6 +28,7 @@
             {% endif %}
             <h3>이야기의 시작</h3>
             <h4>{{post.body}}</h4>
+            
           <div class="pt-5 mt-5">
             <h3 class="mb-5">{{count}} 개의 다음 이야기</h3>
             <ul class="comment-list">

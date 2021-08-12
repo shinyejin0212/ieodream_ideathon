@@ -1,7 +1,12 @@
 from django.http import request
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import CommentI, CommentM, PostS, PostD, CommentS, PostI, PostM, BlogS, BlogI, BlogM, Shop, Comment_sh
+from .models import *
 from django.utils import timezone
+
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+import json 
 
 # Create your views here.
 def index(request):
@@ -433,3 +438,44 @@ def delete_comment_sh(request, comment_id):
     delete_comment = Comment_sh.objects.get(id = comment_id)
     delete_comment.delete()
     return redirect('shop')
+
+
+#like,DisLike
+
+# @require_POST
+# @login_required
+# def like_toggle(request, post_id):
+#     post = get_object_or_404(Post, pk=post_id)
+#     post_like, post_like_created = Like.objects.get_or_create(user=request.user, post=post)
+
+#     if not post_like_created:
+#         post_like.delete()
+#         result = "like_cancel"
+#     else:
+#         result = "like"
+    
+#     context = {
+#         "like_count":post.like_count,
+#         "result":result
+#     }
+
+#     return HttpResponse(json.dumps(context), content_type="application/json")
+
+# @require_POST
+# @login_required
+# def dislike_toggle(request, post_id):
+#     post = get_object_or_404(Post, pk=post_id)
+#     post_dislike, post_dislike_created = Dislike.objects.get_or_create(user=request.user, post=post)
+
+#     if not post_dislike_created:
+#         post_dislike.delete()
+#         result = "dislike_cancel"
+#     else:
+#         result = "dislike"
+    
+#     context = {
+#         "dislike_count":post.dislike_count,
+#         "result":result
+#     }
+
+#     return HttpResponse(json.dumps(context), content_type="application/json")
