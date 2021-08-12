@@ -30,7 +30,7 @@
             <h3>이야기의 시작</h3>
             <h4>{{music.body}}</h4>
 
-<!-- <!-- 하트표시 -->
+<!-- 하트표시 -->
 <span href="#" class="like" name ="{{post.id}}" value="Like"> 
   {% if user in post.like_user_set.all %}
       <div class="alt-service-icon">
@@ -50,8 +50,7 @@
           {{ post.like_count }}개
       {% endif %}
    </span>
-</span> -->
-
+</span>
 
             {% if music.final %}
                 <p><img src="{{ music.final.url }}" alt="사진" class="img-fluid"></p>

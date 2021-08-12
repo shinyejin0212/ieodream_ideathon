@@ -30,27 +30,27 @@
             <h3>이야기의 시작</h3>
             <h4>{{illust.body}}</h4>
 
-<!-- <!-- 하트표시 -->
-<span href="#" class="like" name ="{{post.id}}" value="Like"> 
-  {% if user in post.like_user_set.all %}
-      <div class="alt-service-icon">
-          <i class="fas fa-heart" id ="like-icon" style="color:red;"></i>
-       </div>   
-  {% else %}
-      <div class="alt-service-icon">
-           <i class="far fa-heart" id ="like-icon" style="color:red;"></i> 
-      </div>
-   {% endif %}
-<!-- 좋아요개수 -->
-   <span id="count-{{ post.id }}" class="alt-services-title font-alt"> 
-      좋아요 
-      {% if post.like_count == 0 %} 
-          0개 
-      {% else %}
-          {{ post.like_count }}개
-      {% endif %}
-   </span>
-</span> -->
+  <!-- 하트표시 -->
+  <span href="#" class="like" name ="{{post.id}}" value="Like"> 
+    {% if user in post.like_user_set.all %}
+        <div class="alt-service-icon">
+            <i class="fas fa-heart" id ="like-icon" style="color:red;"></i>
+        </div>   
+    {% else %}
+        <div class="alt-service-icon">
+            <i class="far fa-heart" id ="like-icon" style="color:red;"></i> 
+        </div>
+    {% endif %}
+  <!-- 좋아요개수 -->
+    <span id="count-{{ post.id }}" class="alt-services-title font-alt"> 
+        좋아요 
+        {% if post.like_count == 0 %} 
+            0개 
+        {% else %}
+            {{ post.like_count }}개
+        {% endif %}
+    </span>
+  </span> 
 
             {% if illust.final %}
                 <p><img src="{{ illust.final.url }}" alt="사진" class="img-fluid"></p>
