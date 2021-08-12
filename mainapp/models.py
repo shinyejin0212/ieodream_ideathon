@@ -67,7 +67,7 @@ class PostM(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'postM/', blank=True, null=True)
-    document = models.FileField('음악파일', upload_to='postM//', null=True) #음악첨부파일
+    # document = models.FileField('음악파일', upload_to='postM//', null=True) #음악첨부파일
     def __str__(self):
         return self.title
 
@@ -77,8 +77,8 @@ class PostM(models.Model):
     def image_name(self):
         return self.image.name
     
-    def document_name(self):
-        return os.path.basename(self.document.name)
+    # def document_name(self):
+    #     return os.path.basename(self.document.name)
 
 class CommentM(models.Model):
     content = models.TextField()
@@ -108,6 +108,8 @@ class BlogS(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
+    final = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
+    comment = models.TextField(null=True)
 
     def __str__(self):
         return self.title
@@ -125,6 +127,7 @@ class BlogM(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogM/', blank=True, null=True)
+    final = models.ImageField(upload_to = 'blogM/', blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -135,6 +138,7 @@ class BlogM(models.Model):
     def image_name(self):
         return self.image.name
 
+
 class BlogI(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
@@ -142,6 +146,7 @@ class BlogI(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogI/', blank=True, null=True)
+    final = models.ImageField(upload_to = 'blogI/', blank=True, null=True)
 
     def __str__(self):
         return self.title
