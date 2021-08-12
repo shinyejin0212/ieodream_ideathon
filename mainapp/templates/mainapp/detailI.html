@@ -34,6 +34,13 @@
             <ul class="comment-list">
               {% for comment in comments %}
               <li class="comment">
+                <div class="vcard bio">
+                  {% if comment.writer.profile.profile_photo %}
+                    <img class="round" src="{{comment.writer.profile.profile_photo.url}}" width="200"> <br>
+                  {% else %}
+                    <img class="round" src="{% static './../static/images/프로필기본이미지.png' %}" width="200"> <br>
+                  {% endif %}
+                </div>
                 <div class="comment-body">
                   <h3>작성자 : {{comment.writer}}</h3>
                   <div class="meta">{{comment.created_at}}</div>
@@ -42,9 +49,10 @@
                   {% if comment.image %}
                   <p><img src="{{ comment.image.url }}" alt="사진" class="img-fluid"></p>
                   {% else %}
-                  <div class="vcard bio">
+                  <p>첨부파일이 없습니다.</p>
+                  <!-- <div class="vcard bio">
                     <img src="{% static 'images/unicorn.png' %}" alt="Image placeholder">
-                  </div>
+                  </div> -->
                   {% endif %}
                   <!-- 댓글수정은 댓글 작성자만, 댓글삭제는 댓글작성자와 게시물작성가 할 수 있도록! -->
                   {% if user == comment.writer %}
