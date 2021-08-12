@@ -346,9 +346,9 @@ def deleteD(request, id):
 
 #꿈도서관
 def library(request):
-    storys = BlogS.objects.all()
-    illusts = BlogI.objects.all()
-    musics = BlogM.objects.all()
+    storys = BlogS.objects.all().order_by('-pub_date')
+    illusts = BlogI.objects.all().order_by('-pub_date')
+    musics = BlogM.objects.all().order_by('-pub_date')
     return render(request, 'mainapp/library.html', {'storys':storys, 'illusts':illusts, 'musics':musics})
 
 def detailSL(request, id):
