@@ -28,6 +28,11 @@
           <form action="{% url 'update_commentS' post.id comment.id%}" method="post" enctype="multipart/form-data">
             {%csrf_token%}
             <p>내용 : <textarea type="text" name="content" id="" cols="30" rows="10">{{comment.content}}</textarea></p>
+            <p>첨부파일 :</p>
+                <input type="file" name="image" onchange="fileCheck(this)">
+                {% if comment.image %}
+                    <p>{{comment.image_name}}</p>
+                {% endif %}
             <button type="submit">제출</button>
         </form>
         </div>
