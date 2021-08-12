@@ -345,12 +345,15 @@ def detailIL(request, id):
 
 def createIL(request, id):
     post = PostI.objects.get(id = id)
+    all_comments = post.comments.all().order_by('created_at')
     illust_library = BlogI()
     illust_library.title = post.title
     illust_library.writer = post.writer
     illust_library.pub_date = post.pub_date
     illust_library.body = post.body
     illust_library.image = post.image
+    for nextstory in all_comments:
+        illust_library.final = nextstory.image
     illust_library.save()
     return redirect('detailIL', illust_library.id)
 
@@ -365,12 +368,15 @@ def detailML(request, id):
 
 def createML(request, id):
     post = PostM.objects.get(id = id)
+    all_comments = post.comments.all().order_by('created_at')
     music_library = BlogM()
     music_library.title = post.title
     music_library.writer = post.writer
     music_library.pub_date = post.pub_date
     music_library.body = post.body
     music_library.image = post.image
+    for nextstory in all_comments:
+        music_library.final = nextstory.image
     music_library.save()
     return redirect('detailML', music_library.id)
 
