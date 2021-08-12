@@ -105,11 +105,10 @@ class BlogS(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(auto_now_add = True)
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
-    final = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
-    comment = models.TextField(null=True)
+    comment = models.TextField()
 
     def __str__(self):
         return self.title
@@ -124,7 +123,7 @@ class BlogM(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(auto_now_add = True)
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogM/', blank=True, null=True)
     final = models.ImageField(upload_to = 'blogM/', blank=True, null=True)
@@ -143,7 +142,7 @@ class BlogI(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(auto_now_add = True)
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogI/', blank=True, null=True)
     final = models.ImageField(upload_to = 'blogI/', blank=True, null=True)
