@@ -104,6 +104,7 @@ urlpatterns = [
     path('edit_comment_sh/<str:comment_id>', views.edit_comment_sh, name="edit_comment_sh"),
     path('update_comment_sh/<str:comment_id>', views.update_comment_sh, name="update_comment_sh"),
     path('delete_comment_sh/<str:comment_id>', views.delete_comment_sh, name="delete_comment_sh"),
+    path('', include('mainapp.urls')), #urls.py 관리하는법 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
