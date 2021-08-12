@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-md-8 ftco-animate">
           <h2 class="mb-3">{{product.title}}</h2>
-          <br>
+          <p>작성자 : {{product.writer}}</p><br>
           <p>{{product.body}}</p>
           {% if user == product.writer %}
           <a href="{%url 'edit_shop' product.id%}">수정하기</a>
@@ -50,7 +50,7 @@
             작성자 : {{comment.writer}}<br>
             {{comment.content}}
             {% if user == comment.writer %}
-            <!--a href="{%url 'edit_comment_sh' comment.id%}">수정하기</a-->
+            <a href="{%url 'edit_comment_sh' comment.id%}">수정하기</a>
             <a href="{%url 'delete_comment_sh' comment.id%}">삭제하기</a>
             <br><hr>
             {%endif%}
