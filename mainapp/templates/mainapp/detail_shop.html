@@ -71,12 +71,13 @@
               <h2 class="my_title">꿈 매칭 시작하기</h2>
             </div>
           </form><br>
+          {%if user.is_authenticated%}
           <form action="{%url 'create_comment_sh' product.id%}" method="POST">
             {%csrf_token%}
             <textarea name="content" placeholder="댓글 내용 입력"></textarea>
             <input type="submit" value="확인">
           </form>
-
+          {%endif%}
           {% for comment in comment_sh %}
           <div>
             <div style="float: left;">작성자 : </div><p style="color: palevioletred;">{{comment.writer}}</p>
