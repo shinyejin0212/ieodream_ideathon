@@ -55,7 +55,13 @@
             <ul class="comment-list">
               {% for comment in comments %}
               <li class="comment">
-                
+                <div class="vcard bio">
+                  {% if comment.writer.profile.profile_photo %}
+                    <img class="round" src="{{comment.writer.profile.profile_photo.url}}" width="200"> <br>
+                  {% else %}
+                    <img class="round" src="{% static './../static/images/프로필기본이미지.png' %}" width="200"> <br>
+                  {% endif %}
+                </div>
                 <div class="comment-body">
                   <h3>작성자 : {{comment.writer}}</h3>
                   <div class="meta">{{comment.created_at}}</div>
@@ -86,7 +92,7 @@
             <div class="comment-form-wrap pt-5">
               <h3 class="mb-5">다음 스토리를 작성해 주세요!!</h3>
               {%if user.is_authenticated%}
-              <form action="{% url 'create_commentS' post.id %}" method="POST" class="p-5 bg-light">
+              <form action="{% url 'create_commentS' post.id %}" method="POST" class="p-5 bg-light" enctype="multipart/form-data">
                 {%csrf_token%}
                 <div class="form-group">
                   <label for="message">다음 내용</label>
