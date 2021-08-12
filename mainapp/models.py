@@ -164,7 +164,7 @@ class BlogS(models.Model):
         
     def image_name(self):
         return self.image.name
-
+##
 class LikeSL(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(BlogS, on_delete=models.CASCADE)
