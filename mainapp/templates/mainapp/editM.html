@@ -29,6 +29,7 @@
                 {%csrf_token%}
                 <p>제목 : <input type="text" name="title" value="{{post.title}}"></p>
                 <p>첨부파일 :</p>
+                <!-- 첨부파일 음악파일로 할 수있게끔 수정 필요-->
                 <input type="file" name="image" onchange="fileCheck(this)">
                 {% if post.image %}
                     <p>{{post.image_name}}</p>

@@ -91,6 +91,8 @@ def update_commentS(request, post_id, comment_id):
     post = get_object_or_404(PostS, id = post_id)
     update_comment = CommentS.objects.get(id = comment_id)
     update_comment.content = request.POST['content']
+    if request.FILES.get('image'):
+        update_comment.image = request.FILES.get('image')  #여원수정 
     update_comment.save()
     return redirect('detailS',post.pk)
 
@@ -164,6 +166,9 @@ def update_commentI(request, post_id, comment_id):
     post = get_object_or_404(PostI, id = post_id)
     update_comment = CommentI.objects.get(id = comment_id)
     update_comment.content = request.POST['content']
+    if request.FILES.get('image'):
+        update_comment.image = request.FILES.get('image')  #여원수정 
+    update_comment.save()
     update_comment.save()
     return redirect('detailI',post.pk)
 
@@ -231,12 +236,16 @@ def create_commentM(request, post_id):
 		current_user = request.user
 		comment_content = request.POST.get('content')
 		CommentM.objects.create(content=comment_content, writer=current_user, post=post)
+        
 	return redirect('detailM', post_id)
 
 def update_commentM(request, post_id, comment_id):
     post = get_object_or_404(PostS, id = post_id)
     update_comment = CommentM.objects.get(id = comment_id)
     update_comment.content = request.POST['content']
+    if request.FILES.get('image'):
+        update_comment.image = request.FILES.get('image')  #여원수정 
+    update_comment.save()
     update_comment.save()
     return redirect('detailM',post.pk)
 
