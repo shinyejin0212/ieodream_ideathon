@@ -36,20 +36,39 @@
       {% if user.profile.profile_photo %}
       <img class="round" src="{{user.profile.profile_photo.url}}" width="200"> <br>
       {% else %}
-      <img class="round" src="{% static './../static/images/글_2.jpg' %}" width="200"> <br>
+      <img class="round" src="{% static './../static/images/프로필기본이미지.png' %}" width="200"> <br>
       {% endif %}
   </div>
-
+  <div class="followButton">
+    {% if request.user != user %}
+    
+      {% if request.user.profile in user.profile.followers.all %}
+          <a href="{%url 'mypage:follow' user.id %}" style="color: white;"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
+      {% else %}
+        <a href="{%url 'mypage:follow' user.id %} " style="color: white;" ><button type="button" class="btn btn-info">팔로우</button></a> {% endif %}
+    {% endif %}
+  </div>
   <div class="col-xs-6 col-md-3 "data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
     <!-- user -->
-      <h3 style="color: white;"> ID:{{user.username}} </h3><br>
+
+      <div class="container">
+        <div class="follows">
+          <p style="color: white; font-weight: 500;">follower: {{user.profile.followers.count}}</p> 
+          {%for follower in user.profile.followers.all %}
+            <a href="{% url 'mypage:mypage' follower.user.id %}">{{follower.user.username}}</a> 
+          {% endfor %}
+            <p style="color: white; font-weight: 500;">following: {{user.profile.followings.count}}</p>
+          {% for following in user.profile.followings.all %}
+            <a href="{%url 'mypage:mypage' following.user.id%}">{{following.user.username}}</a>
+          {% endfor %}
+        </div>
       {% if user %} 
-        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default" style="background-color:rgba(194, 180, 255, 0.774); color: whitesmoke;">프로필 편집</button></a></h2></a>
+        <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default" style="background-color:rgba(194, 180, 255, 0.774); color: whitesmoke; margin-top: 30px;">프로필 편집</button></a></h2></a>
       {% endif %}
   </div>
 </div>
           </div>
-          
+          </div>
 
         </div>
       </div>

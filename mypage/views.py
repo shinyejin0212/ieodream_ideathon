@@ -14,16 +14,27 @@ from mainapp.models import PostS
 from mainapp.models import PostM
 from mainapp.models import PostI
 
-def mypage(request):
-        user = request.user
+def mypage(request, id):
+        user = get_object_or_404(User,pk=id)
         storys = PostS.objects.filter(writer=user) #로그인한 유저와 글 작성자 이름 동일하게 
         musics = PostM.objects.filter(writer=user) #로그인한 유저와 글 작성자 이름 동일하게 
-        illustrations = PostI.objects.filter(writer=user) #로그인한 유저와 글 작성자 이름 동일하게 
+        illustrations = PostI.objects.filter(writer=user) #로그인한 유저와 글 작성자 이름 동일하게
+        context ={
+            'user':user,
+            'posts':PostS.objects.filter(writer=user),
+            'storys':storys,
+            'musics':musics,
+            'illustrations':illustrations,
+            'profile_user':DetailView.model,
+            'followings':user.profile.followings.all(), 
+            'followers':user.profile.followers.all(),
+        }
         DetailView.context_object_name='profile_user'
         DetailView.model = User 
         DetailView.template_name = 'mypage/mypage.html'
+
         #이야기,음악,일러스트레이트 반환하기 
-        return render(request,'mypage/mypage.html',{'storys':storys,'musics':musics,'illustrations':illustrations, 'profile_user':DetailView.model})
+        return render(request,'mypage/mypage.html',context)
 
 class ProfileView(DetailView):
     context_object_name = 'profile_user' # model로 지정해준 User모델에 대한 객체와 로그인한 사용자랑 명칭이 겹쳐버리기 때문에 이를 지정함
@@ -62,4 +73,15 @@ class ProfileUpdateView(View):
             profile.user = u
             profile.save()
 
-        return redirect('mypage:mypage')
+        return redirect('mypage:mypage',u.id)
+
+
+def follow(request,id):
+    user=request.user
+    followed_user=get_object_or_404(User,pk=id) 
+    is_follower=user.profile in followed_user.profile.followers.all() 
+    if is_follower:
+        user.profile.followings.remove(followed_user.profile)
+    else:
+        user.profile.followings.add(followed_user.profile) 
+    return redirect('mypage:mypage', followed_user.id)
