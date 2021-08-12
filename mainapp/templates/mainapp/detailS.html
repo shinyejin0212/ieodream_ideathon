@@ -34,7 +34,13 @@
             <ul class="comment-list">
               {% for comment in comments %}
               <li class="comment">
-                
+                <div class="vcard bio">
+                  {% if comment.writer.profile.profile_photo %}
+                    <img class="round" src="{{comment.writer.profile.profile_photo.url}}" width="200"> <br>
+                  {% else %}
+                    <img class="round" src="{% static './../static/images/프로필기본이미지.png' %}" width="200"> <br>
+                  {% endif %}
+                </div>
                 <div class="comment-body">
                   <h3>작성자 : {{comment.writer}}</h3>
                   <div class="meta">{{comment.created_at}}</div>
