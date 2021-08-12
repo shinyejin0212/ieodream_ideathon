@@ -34,13 +34,18 @@
             <ul class="comment-list">
               {% for comment in comments %}
               <li class="comment">
-                <div class="vcard bio">
-                  <img src="{% static 'images/unicorn.png' %}" alt="Image placeholder">
-                </div>
                 <div class="comment-body">
                   <h3>작성자 : {{comment.writer}}</h3>
                   <div class="meta">{{comment.created_at}}</div>
                   <p>{{comment.content}}</p><br>
+                  <!-- 댓글 사진 첨부 -->
+                  {% if comment.image %}
+                  <p><img src="{{ comment.image.url }}" alt="사진" class="img-fluid"></p>
+                  {% else %}
+                  <div class="vcard bio">
+                    <img src="{% static 'images/unicorn.png' %}" alt="Image placeholder">
+                  </div>
+                  {% endif %}
                   <!-- 댓글수정은 댓글 작성자만, 댓글삭제는 댓글작성자와 게시물작성가 할 수 있도록! -->
                   {% if user == comment.writer %}
                   <p><button type="button" class="btn btn-outline-info"><a href="{% url 'edit_commentM' post.id comment.id %}">수정하기</a></button></p>
@@ -65,6 +70,11 @@
                   <label for="message">다음 악상</label>
                   <textarea name="content" id="message" cols="30" rows="10" class="form-control"></textarea>
                 </div>
+                <p>첨부파일 :</p>
+                <input type="file" name="image" onchange="fileCheck(this)">
+                {% if post.image %}
+                    <p>{{post.image_name}}</p>
+                {% endif %}
                 <div class="form-group">
                   <input type="submit" value="작성하기" class="btn py-3 px-4 btn-primary">
                 </div>

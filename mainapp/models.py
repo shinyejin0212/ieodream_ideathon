@@ -23,11 +23,14 @@ class PostS(models.Model):
         return self.image.name
 
 class CommentS(models.Model):
-	content = models.TextField()
-	writer = models.ForeignKey(User, on_delete=models.CASCADE)
-	post = models.ForeignKey(PostS, on_delete=models.CASCADE, related_name='comments')
-	created_at = models.DateTimeField(auto_now_add = True)
-	updated_at = models.DateTimeField(auto_now = True)
+    content = models.TextField()
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostS, on_delete=models.CASCADE, related_name='comments')
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    image = models.ImageField(upload_to = 'commentS/', blank=True, null=True)
+    
+    
 
 # dream relay illustration
 class PostI(models.Model):
@@ -48,11 +51,12 @@ class PostI(models.Model):
         return self.image.name
 
 class CommentI(models.Model):
-	content = models.TextField()
-	writer = models.ForeignKey(User, on_delete=models.CASCADE)
-	post = models.ForeignKey(PostI, on_delete=models.CASCADE, related_name='comments')
-	created_at = models.DateTimeField(auto_now_add = True)
-	updated_at = models.DateTimeField(auto_now = True)
+    content = models.TextField()
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostI, on_delete=models.CASCADE, related_name='comments')
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    image = models.ImageField(upload_to = 'commentI/', blank=True, null=True)
 
 # dream relay music
 
@@ -74,11 +78,12 @@ class PostM(models.Model):
         return self.image.name
 
 class CommentM(models.Model):
-	content = models.TextField()
-	writer = models.ForeignKey(User, on_delete=models.CASCADE)
-	post = models.ForeignKey(PostM, on_delete=models.CASCADE, related_name='comments')
-	created_at = models.DateTimeField(auto_now_add = True)
-	updated_at = models.DateTimeField(auto_now = True)
+    content = models.TextField()
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostM, on_delete=models.CASCADE, related_name='comments')
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    image = models.ImageField(upload_to = 'commentM/', blank=True, null=True)
 
 
 #dream diary
