@@ -96,6 +96,11 @@ class PostM(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'postM/', blank=True, null=True)
+    like_user_set = models.ManyToManyField(User, blank=True, related_name='likes_user_setM',through='LikeM')
+
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
 
     def __str__(self):
         return self.title
@@ -105,6 +110,16 @@ class PostM(models.Model):
         
     def image_name(self):
         return self.image.name
+
+class LikeM(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(PostM, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together =(('user','post'))
+
 
 class CommentM(models.Model):
     content = models.TextField()
@@ -135,6 +150,11 @@ class BlogS(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
     comment = models.TextField()
+    like_user_set = models.ManyToManyField(User, blank=True, related_name='likes_user_setSL',through='LikeSL')
+
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
 
     def __str__(self):
         return self.title
@@ -144,6 +164,16 @@ class BlogS(models.Model):
         
     def image_name(self):
         return self.image.name
+
+class LikeSL(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(BlogS, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together =(('user','post'))
+
 
 class BlogM(models.Model):
     id = models.AutoField(primary_key=True)
@@ -152,6 +182,12 @@ class BlogM(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogM/', blank=True, null=True)
+    like_user_set = models.ManyToManyField(User, blank=True, related_name='likes_user_setML',through='LikeML')
+
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
+        
 
     def __str__(self):
         return self.title
@@ -161,6 +197,15 @@ class BlogM(models.Model):
         
     def image_name(self):
         return self.image.name
+
+class LikeML(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(BlogM, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together =(('user','post'))
 
 class BlogI(models.Model):
     id = models.AutoField(primary_key=True)
@@ -169,6 +214,13 @@ class BlogI(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogI/', blank=True, null=True)
+    like_user_set = models.ManyToManyField(User, blank=True, related_name='likes_user_setIL',through='LikeIL')
+
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
+        
+        
 
     def __str__(self):
         return self.title
@@ -178,6 +230,15 @@ class BlogI(models.Model):
         
     def image_name(self):
         return self.image.name
+
+class LikeIL(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(BlogI, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together =(('user','post'))
 
 #꿈거래소
 class Shop(models.Model):

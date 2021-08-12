@@ -480,3 +480,76 @@ def like_toggleI(request, post_id):
         "result":result
     }
     return HttpResponse(json.dumps(context), content_type="application/json")
+
+
+@require_POST
+@login_required
+def like_toggleM(request, post_id):
+    post = get_object_or_404(PostM, pk=post_id)
+    post_like, post_like_created = LikeM.objects.get_or_create(user=request.user, post=post)
+
+    if not post_like_created:
+        post_like.delete()
+        result = "like_cancel"
+    else:
+        result = "like"
+    
+    context = {
+        "like_count":post.like_count,
+        "result":result
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")    
+
+@require_POST
+@login_required
+def like_toggleSL(request, post_id):
+    post = get_object_or_404(BlogS, pk=post_id)
+    post_like, post_like_created = LikeSL.objects.get_or_create(user=request.user, post=post)
+
+    if not post_like_created:
+        post_like.delete()
+        result = "like_cancel"
+    else:
+        result = "like"
+    
+    context = {
+        "like_count":post.like_count,
+        "result":result
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
+@require_POST
+@login_required
+def like_toggleML(request, post_id):
+    post = get_object_or_404(BlogM, pk=post_id)
+    post_like, post_like_created = LikeML.objects.get_or_create(user=request.user, post=post)
+
+    if not post_like_created:
+        post_like.delete()
+        result = "like_cancel"
+    else:
+        result = "like"
+    
+    context = {
+        "like_count":post.like_count,
+        "result":result
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
+@require_POST
+@login_required
+def like_toggleIL(request, post_id):
+    post = get_object_or_404(BlogI, pk=post_id)
+    post_like, post_like_created = LikeIL.objects.get_or_create(user=request.user, post=post)
+
+    if not post_like_created:
+        post_like.delete()
+        result = "like_cancel"
+    else:
+        result = "like"
+    
+    context = {
+        "like_count":post.like_count,
+        "result":result
+    }
+    return HttpResponse(json.dumps(context), content_type="application/json")
