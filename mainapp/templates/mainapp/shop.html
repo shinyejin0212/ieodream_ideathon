@@ -20,7 +20,7 @@
     </div>
   </div>
   {% for product in products %}
-  <div>
+  <div style="margin-left: 100px;">
     <h3><a href = "{%url 'detail_shop' product.id %}">{{product.title}}</a></h3>
     {{product.writer}}<br>
     {{product.summary}}
