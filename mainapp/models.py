@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
-
+import os
 # Create your models here.
 
 #dream relay Story
@@ -67,7 +67,7 @@ class PostM(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to = 'postM/', blank=True, null=True)
-
+    # document = models.FileField('음악파일', upload_to='postM//', null=True) #음악첨부파일
     def __str__(self):
         return self.title
 
@@ -76,6 +76,9 @@ class PostM(models.Model):
         
     def image_name(self):
         return self.image.name
+    
+    # def document_name(self):
+    #     return os.path.basename(self.document.name)
 
 class CommentM(models.Model):
     content = models.TextField()
@@ -106,7 +109,7 @@ class BlogS(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
     final = models.ImageField(upload_to = 'blogS/', blank=True, null=True)
-    comment = models.TextField()
+    comment = models.TextField(null=True)
 
     def __str__(self):
         return self.title
