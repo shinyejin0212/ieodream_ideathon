@@ -10,6 +10,7 @@
         <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
           <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"></span></p>
           <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">꿈 거래소</h1>
+          <h3 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400;">" 서로의 꿈을 매칭할 수 있는 공간입니다 "</h3>
         </div>
       </div>
     </div>
@@ -53,9 +54,9 @@
             <div class="row">
               <div class="col-md-8 ftco-animate">
                 <h2 class="mb-3">{{product.title}}</h2>
-                <p>작성자 : {{product.writer}}</p><br>
+                <div style="float: left;">작성자 : </div><p style="color: palevioletred;">{{product.writer}}</p><br>
                 <p>{{product.pub_date}}</p>
-                <p>{{product.body}}</p><br>
+                <p style="color: black;">{{product.body}}</p><br>
                 {% if user == product.writer %}
                   <button type="button" class="btn btn-outline-info"><a href="{%url 'edit_shop' product.id%}">수정하기</a></button>
                   <button type="button" class="btn btn-outline-info"><a href="{%url 'delete_shop' product.id%}">삭제하기</a></button>
@@ -78,14 +79,15 @@
 
           {% for comment in comment_sh %}
           <div>
-            작성자 : {{comment.writer}}<br>
+            <div style="float: left;">작성자 : </div><p style="color: palevioletred;">{{comment.writer}}</p>
             <div class="meta">{{comment.created_at}}</div>
-            <p>{{comment.content}}</p>
+            <p style="color: black;">{{comment.content}}</p>
             {% if user == comment.writer %}
             <button type="button" class="btn btn-outline-info"><a href="{%url 'edit_comment_sh' comment.id%}">수정하기</a></button>
             <button type="button" class="btn btn-outline-info"><a href="{%url 'delete_comment_sh' comment.id%}">삭제하기</a></button>
-            <br><hr>
+            <br>
             {%endif%}
+            <hr>
           </div>
           {%endfor%}
         </div>
