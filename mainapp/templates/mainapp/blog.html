@@ -25,7 +25,14 @@
         {% for post in posts %}
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">
-            <a href="{% url 'detailD' post.id %}" class="block-20" style="background-image: url('/static/images/image_1.jpg');"></a>
+            <a href="{% url 'detailD' post.id %}" class="block-20">            
+              {% if post.image %}
+                <img src = "{{ post.image.url }}" alt="사진" class="img-fluid mb-4">
+              {% else %}
+                <img src="{% static 'images/image_1.jpg' %}" alt="default_image" class="img-fluid mb-4">
+              {% endif %}
+            </a>
+
             <div class="text p-4 d-block">
               <h3 class="heading"><a href="{% url 'detailD' post.id %}">{{post.title}}</a></h3>
               <div class="meta mb-3">

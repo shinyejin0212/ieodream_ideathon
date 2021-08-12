@@ -7,6 +7,3 @@ app_name="mypage"
 urlpatterns=[
     path('mypage/', views.mypage, name="mypage"),
     path('profile_update/', login_required(views.ProfileUpdateView.as_view()), name='profile_update'),
-]
-
- 
