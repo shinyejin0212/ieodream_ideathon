@@ -14,19 +14,22 @@
       </div>
     </div>
   </div>
-  
+
   <section class="ftco-section ftco-degree-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 ftco-animate">
-          <h2 class="mb-3">{{product.title}}</h2>
-          <p>작성자 : {{product.writer}}</p><br>
-          <p>{{product.body}}</p>
-          {% if user == product.writer %}
-          <a href="{%url 'edit_shop' product.id%}">수정하기</a>
-          <a href="{%url 'delete_shop' product.id%}">삭제하기</a>
-          {%endif%}
-        </div> <!-- .col-md-8 -->
+        <!--div class="comment-form-wrap pt-5" style="margin-left: 100px;">
+          <div class="col-md-4 sidebar ftco-animate order-first">
+            <div class="sidebar-box" style="width: 350px;">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon fa fa-search"></span>
+                  {{product.pub_date}}
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+            </div> 
+        </div>
+
+        </div--><!-- .col-md-8 -->
         <!--div class="col-md-4 sidebar ftco-animate order-first">
           <div class="sidebar-box">
             <form action="#" class="search-form">
@@ -37,8 +40,36 @@
               </div>
             </form>
           </div-->
-        
+          <div class="container">
+            
+            <!--div class="sidebar-box" style="width: 350px;"-->
+              <form action="#" class="search-form" style="width: 800px;">
+                <div class="form-group">
+                  <span class="icon fa fa-search"></span>
+                  <h2 class="my_title">꿈 거래 제안하기</h2>
+                </div>
+              </form>
+            <!--/div-->
+            <div class="row">
+              <div class="col-md-8 ftco-animate">
+                <h2 class="mb-3">{{product.title}}</h2>
+                <p>작성자 : {{product.writer}}</p><br>
+                <p>{{product.pub_date}}</p>
+                <p>{{product.body}}</p><br>
+                {% if user == product.writer %}
+                  <button type="button" class="btn btn-outline-info"><a href="{%url 'edit_shop' product.id%}">수정하기</a></button>
+                  <button type="button" class="btn btn-outline-info"><a href="{%url 'delete_shop' product.id%}">삭제하기</a></button>
+                {%endif%}
+                 <br>
+                <br><br>
         <div>
+          <hr>
+          <form action="#" class="search-form" style="width: 800px;">
+            <div class="form-group">
+              <span class="icon fa fa-search"></span>
+              <h2 class="my_title">꿈 매칭 시작하기</h2>
+            </div>
+          </form><br>
           <form action="{%url 'create_comment_sh' product.id%}" method="POST">
             {%csrf_token%}
             <textarea name="content" placeholder="댓글 내용 입력"></textarea>
@@ -48,21 +79,17 @@
           {% for comment in comment_sh %}
           <div>
             작성자 : {{comment.writer}}<br>
-            {{comment.content}}
+            <div class="meta">{{comment.created_at}}</div>
+            <p>{{comment.content}}</p>
             {% if user == comment.writer %}
-            <a href="{%url 'edit_comment_sh' comment.id%}">수정하기</a>
-            <a href="{%url 'delete_comment_sh' comment.id%}">삭제하기</a>
+            <button type="button" class="btn btn-outline-info"><a href="{%url 'edit_comment_sh' comment.id%}">수정하기</a></button>
+            <button type="button" class="btn btn-outline-info"><a href="{%url 'delete_comment_sh' comment.id%}">삭제하기</a></button>
             <br><hr>
             {%endif%}
           </div>
           {%endfor%}
         </div>
 
-
-
-
-
-          
         </div>
 
       </div>
