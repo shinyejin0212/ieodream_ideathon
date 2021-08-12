@@ -41,11 +41,13 @@
   </div>
   <div class="followButton">
     {% if request.user != user %}
-    
       {% if request.user.profile in user.profile.followers.all %}
           <a href="{%url 'mypage:follow' user.id %}" style="color: white;"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
       {% else %}
         <a href="{%url 'mypage:follow' user.id %} " style="color: white;" ><button type="button" class="btn btn-info">팔로우</button></a> {% endif %}
+    {% endif %}
+    {% if request.user == user %}
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1>
     {% endif %}
   </div>
   <div class="col-xs-6 col-md-3 "data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
