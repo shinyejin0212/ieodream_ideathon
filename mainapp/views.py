@@ -85,12 +85,20 @@ def deleteS(request, id):
     return redirect('story')
 
 def create_commentS(request, post_id):
-	if request.method == "POST":
-		post = get_object_or_404(PostS, pk=post_id)
-		current_user = request.user
-		comment_content = request.POST.get('content')
-		CommentS.objects.create(content=comment_content, writer=current_user, post=post)
-	return redirect('detailS', post_id)
+	# if request.method == "POST":
+	# 	post = get_object_or_404(PostS, pk=post_id)
+	# 	current_user = request.user
+	# 	comment_content = request.POST.get('content')
+	# 	CommentS.objects.create(content=comment_content, writer=current_user, post=post)
+	# return redirect('detailS', post_id)
+
+    new_comment = CommentS()
+    new_comment.content = request.POST['content']
+    new_comment.writer = request.user
+    new_comment.image = request.FILES.get('image')
+    new_comment.post= get_object_or_404(PostS, pk=post_id)
+    new_comment.save()
+    return redirect('detailS',post_id)
 
 def update_commentS(request, post_id, comment_id):
     post = get_object_or_404(PostS, id = post_id)
@@ -160,12 +168,20 @@ def deleteI(request, id):
     return redirect('illustration')
 
 def create_commentI(request, post_id):
-	if request.method == "POST":
-		post = get_object_or_404(PostI, pk=post_id)
-		current_user = request.user
-		comment_content = request.POST.get('content')
-		CommentI.objects.create(content=comment_content, writer=current_user, post=post)
-	return redirect('detailI', post_id)
+	# if request.method == "POST":
+	# 	post = get_object_or_404(PostI, pk=post_id)
+	# 	current_user = request.user
+	# 	comment_content = request.POST.get('content')
+	# 	CommentI.objects.create(content=comment_content, writer=current_user, post=post)
+	# return redirect('detailI', post_id)
+
+    new_comment = CommentI()
+    new_comment.content = request.POST['content']
+    new_comment.writer = request.user
+    new_comment.image = request.FILES.get('image')
+    new_comment.post= get_object_or_404(PostI, pk=post_id)
+    new_comment.save()
+    return redirect('detailI',post_id)
 
 def update_commentI(request, post_id, comment_id):
     post = get_object_or_404(PostI, id = post_id)
@@ -209,8 +225,18 @@ def createM(request):
     new_post.pub_date = timezone.now()
     new_post.body = request.POST['body']
     new_post.image = request.FILES.get('image')
+    # if request.FILES:
+    #     new_post.document = request.FILES['document']
     new_post.save()
     return redirect('detailM',new_post.id)
+
+
+    def form_valid(self, form):
+        if self.request.FILES:
+            form.instance.attached = self.request.FILES['upload']
+        
+        form.save()
+        return super().form_valid(form)
 
 def newM(request):
     return render(request, 'mainapp/newM.html')
@@ -236,13 +262,22 @@ def deleteM(request, id):
     return redirect('music')
 
 def create_commentM(request, post_id):
-	if request.method == "POST":
-		post = get_object_or_404(PostM, pk=post_id)
-		current_user = request.user
-		comment_content = request.POST.get('content')
-		CommentM.objects.create(content=comment_content, writer=current_user, post=post)
+	# if request.method == "POST":
+	# 	post = get_object_or_404(PostM, pk=post_id)
+	# 	current_user = request.user
+	# 	comment_content = request.POST.get('content')
+	# 	CommentM.objects.create(content=comment_content, writer=current_user, post=post)
         
-	return redirect('detailM', post_id)
+	# return redirect('detailM', post_id)
+    new_comment = CommentM()
+    new_comment.content = request.POST['content']
+    new_comment.writer = request.user
+    new_comment.image = request.FILES.get('image')
+    new_comment.post= get_object_or_404(PostM, pk=post_id)
+    new_comment.save()
+    return redirect('detailM',post_id)
+
+
 
 def update_commentM(request, post_id, comment_id):
     post = get_object_or_404(PostS, id = post_id)

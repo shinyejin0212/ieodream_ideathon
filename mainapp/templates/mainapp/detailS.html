@@ -65,7 +65,7 @@
             <div class="comment-form-wrap pt-5">
               <h3 class="mb-5">다음 스토리를 작성해 주세요!!</h3>
               {%if user.is_authenticated%}
-              <form action="{% url 'create_commentS' post.id %}" method="POST" class="p-5 bg-light">
+              <form action="{% url 'create_commentS' post.id %}" method="POST" class="p-5 bg-light" enctype="multipart/form-data">
                 {%csrf_token%}
                 <div class="form-group">
                   <label for="message">다음 내용</label>
