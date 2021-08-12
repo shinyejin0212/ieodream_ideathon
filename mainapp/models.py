@@ -30,6 +30,7 @@ class CommentS(models.Model):
     updated_at = models.DateTimeField(auto_now = True)
     image = models.ImageField(upload_to = 'commentS/', blank=True, null=True)
     
+    
 
 # dream relay illustration
 class PostI(models.Model):
