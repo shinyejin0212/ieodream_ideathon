@@ -1,6 +1,6 @@
 from django.http import request
 from django.shortcuts import render,get_object_or_404, redirect
-from .models import CommentI, CommentM, PostS, PostD, CommentS, PostI, PostM
+from .models import CommentI, CommentM, PostS, PostD, CommentS, PostI, PostM, BlogS, BlogI, BlogM, Shop, Comment_sh
 from django.utils import timezone
 
 # Create your views here.
@@ -33,8 +33,6 @@ def services(request):
 def dreamrelay(request):
     return render(request, 'mainapp/dreamrelay.html')
 
-def library(request):
-    return render(request, 'mainapp/library.html')
 
 # dreamrelay_story start
 
@@ -296,3 +294,133 @@ def deleteD(request, id):
     delete_post = PostD.objects.get(id = id)
     delete_post.delete()
     return redirect('blog')
+
+#꿈도서관
+def library(request):
+    storys = BlogS.objects.all()
+    illusts = BlogI.objects.all()
+    musics = BlogM.objects.all()
+    return render(request, 'mainapp/library.html', {'storys':storys, 'illusts':illusts, 'musics':musics})
+
+def detailSL(request, id):
+    story = get_object_or_404(BlogS, id = id)
+    return render(request,'mainapp/detailSL.html', {'story':story})
+
+def createSL(request, id):
+    post = PostS.objects.get(id = id)
+    story_library = BlogS()
+    story_library.title = post.title
+    story_library.writer = post.writer
+    story_library.pub_date = post.pub_date
+    story_library.body = post.body
+    story_library.image = post.image
+    story_library.save()
+    return redirect('detailSL', story_library.id)
+
+def deleteSL(request, id):
+    delete_post = BlogS.objects.get(id = id)
+    delete_post.delete()
+    return redirect('library')
+
+def detailIL(request, id):
+    illust = get_object_or_404(BlogI, id = id)
+    return render(request,'mainapp/detailIL.html', {'illust':illust})
+
+def createIL(request, id):
+    post = PostI.objects.get(id = id)
+    illust_library = BlogI()
+    illust_library.title = post.title
+    illust_library.writer = post.writer
+    illust_library.pub_date = post.pub_date
+    illust_library.body = post.body
+    illust_library.image = post.image
+    illust_library.save()
+    return redirect('detailIL', illust_library.id)
+
+def deleteIL(request, id):
+    delete_post = BlogI.objects.get(id = id)
+    delete_post.delete()
+    return redirect('library')
+
+def detailML(request, id):
+    music = get_object_or_404(BlogM, id = id)
+    return render(request,'mainapp/detailML.html', {'music':music})
+
+def createML(request, id):
+    post = PostM.objects.get(id = id)
+    music_library = BlogM()
+    music_library.title = post.title
+    music_library.writer = post.writer
+    music_library.pub_date = post.pub_date
+    music_library.body = post.body
+    music_library.image = post.image
+    music_library.save()
+    return redirect('detailML', music_library.id)
+
+def deleteML(request, id):
+    delete_post = BlogM.objects.get(id = id)
+    delete_post.delete()
+    return redirect('library')
+
+#꿈거래소
+def shop(request):
+    products = Shop.objects.all()
+    return render(request, 'mainapp/shop.html', {'products':products})
+
+def detail_shop(request, id):
+    product = get_object_or_404(Shop, id = id)
+    all_comments = product.comment_sh.all().order_by('created_at')
+    return render(request, 'mainapp/detail_shop.html', {'product':product, 'comment_sh':all_comments})
+
+def new_shop(request):
+    return render(request, 'mainapp/new_shop.html')
+
+def create_shop(request):
+    new_product = Shop()
+    new_product.title = request.POST['title']
+    new_product.writer = request.user
+    new_product.pub_date = timezone.now()
+    new_product.body = request.POST['body']
+    new_product.save()
+    return redirect('detail_shop', new_product.id)
+
+def edit_shop(request, id):
+    edit_product = Shop.objects.get(id = id)
+    return render(request, 'mainapp/edit_shop.html', {'product' : edit_product})
+
+def update_shop(request, id):
+    update_product = Shop.objects.get(id=id)
+    update_product.title = request.POST['title']
+    update_product.writer = request.user
+    update_product.pub_date = timezone.now()
+    update_product.body = request.POST['body']
+    update_product.save()
+    return redirect('detail_shop', update_product.id)
+
+def delete_shop(request, id):
+    delete_product = Shop.objects.get(id = id)
+    delete_product.delete()
+    return redirect('shop')
+
+def create_comment_sh(request, product_id):
+    if request.method == "POST":
+        product = get_object_or_404(Shop, pk=product_id)
+        current_user = request.user
+        comment_content = request.POST.get('content')
+        Comment_sh.objects.create(content=comment_content, writer=current_user, product=product)
+    return redirect('detail_shop', product_id)
+
+def edit_comment_sh(request, comment_id):
+    edit_comment_sh = Comment_sh.objects.get(id=comment_id)
+    return render(request, 'mainapp/edit_comment_sh.html', {'comment':edit_comment_sh})
+
+def update_comment_sh(request, comment_id):
+    update_comment = Comment_sh.objects.get(id=comment_id)
+    update_comment.content = request.POST.get('content')
+    update_comment.save()
+    return redirect('detail_shop', update_comment.product_id)
+
+def delete_comment_sh(request, comment_id):
+    delete_comment = Comment_sh.objects.get(id = comment_id)
+    delete_comment.delete()
+    return redirect('shop')

@@ -2,122 +2,133 @@
 {% load static %}
 
 {% block content %}
-<div class="hero-wrap js-fullheight">
-    <div class="overlay"></div>
-    <div id="particles-js"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../static/images/배경사진.jpg); background-repeat: no-repeat; background-size: cover;">
-        <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>꿈 도서관</span></p>
-          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">꿈 도서관</h1>
+<style>
+  .my_title{
+    font-weight: 600;
+  }
+</style>
+<section style="margin:80px 30px 0px 30px;">
+  <div class="container">
+    {% if user.is_authenticated %}
+
+    <div class="hero-wrap js-fullheight">
+      <div class="overlay"></div>
+      <div id="particles-js"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="background-image: url(../../static/images/배경사진.jpg); background-repeat: no-repeat; background-size: cover; ">
+          <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 550;">꿈 도서관</h1>
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-weight: 400;">" 꿈으로 만들어진 작품들 "</h1>
+          </div>
         </div>
       </div>
     </div>
+    <div class="myList">
+
+    
+      <div class="story">
+        <i class="fas fa-feather-alt fa-2x"></i>
+        <h1 class="my_title">꿈으로 작성한 이야기</h1>
+          <!-- 게시글 나열하는 프론트  -->
+          <div class="row">
+            {% for story in storys %}
+            <div class="col-md-4 ftco-animate">
+              <div class="blog-entry">
+                <a href="{% url 'detailSL' story.id %}" class="block-20" style="background-image: url('/static/images/글_2.jpg');"></a>
+                <div class="text p-4 d-block">
+                  <div class="meta mb-3">
+                    <div><a href="{% url 'detailSL' story.id %}">{{story.pub_date}}</a></div>
+                    <div><a href="{% url 'detailSL' story.id %}">{{story.writer}}</a></div>
+                  </div>
+                  <h3 class="heading"><a href="{% url 'detailSL' story.id %}">{{story.title}}</a></h3>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="illustration">
+        <i class="fas fa-paint-brush fa-2x"></i>
+        <h1 class="my_title">꿈으로 그린 그림</h1>
+        <div class="row">
+          {% for illust in illusts %}
+          <div class="col-md-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="{% url 'detailIL' illust.id %}" class="block-20" style="background-image: url('/static/images/그림_2.png');"></a>
+              <div class="text p-4 d-block">
+                <div class="meta mb-3">
+                  <div><a href="{% url 'detailIL' illust.id %}">{{illust.pub_date}}</a></div>
+                  <div><a href="{% url 'detailIL' illust.id %}">{{illust.writer}}</a></div>
+                </div>
+                <h3 class="heading"><a href="{% url 'detailIL' illust.id %}">{{illust.title}}</a></h3>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="music">
+        <i class="fas fa-music fa-2x"></i>
+        <h1 class="my_title">꿈으로 작곡한 음악</h1>
+        <div class="row">
+          {% for music in musics %}
+          <div class="col-md-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="{% url 'detailML' music.id %}" class="block-20" style="background-image: url('/static/images/음악_4.jpg');"></a>
+              <div class="text p-4 d-block">
+                <div class="meta mb-3">
+                  <div><a href="{% url 'detailML' music.id %}">{{music.pub_date}}</a></div>
+                  <div><a href="{% url 'detailML' music.id %}">{{music.writer}}</a></div>
+                </div>
+                <h3 class="heading"><a href="{% url 'detailML' music.id %}">{{music.title}}</a></h3>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+    
+    
+    {% else %}
+    <div style="display:block; text-align: center; width:900px;margin: 300px auto; position:relative;">
+      <h3>로그인 후 이용 가능</h3>
+      <br>
+      <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
+      <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
+    </div>
+    <!-- 카테고리 별 글작성 추가 될시 이름에 맞게 수정할예정  -->
+
+    
+    
+    <!-- <div class="MyData">
+      <div class="stroy">
+        <h1>나의 이야기</h1>
+        {% for stroy in storys %}
+          <a href="{% url 'main:stroy_detail' stroy.id %}">{{stroy.title}}</a><hr>
+        {%endfor%}
+      </div>
+      <div class="music">
+        <h1>나의 작곡</h1>
+        <a href="{% url 'main:music_detail' music.id %}">{{music.title}}</a><hr>
+      </div>
+      <div class="illustration">
+        <h1>나의 그림</h1>
+        <a href="{% url 'main:illustration_detail' illustration.id %}">{{illustration.title}}</a><hr>
+      </div>
+    </div> -->
+
+
+    {% endif %}
+
   </div>
-  
-  <section class="ftco-section bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry">
-            <a href="{% url 'Moonight' %}" class="block-20" style="background-image: url('/static/images/image-6.jpg');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="{% url 'Moonight' %}">2021년 7월 2일</a></div><br>
-                <div><a href="{% url 'Moonight' %}"> 정민경, 서희찬, 이여원 공동 집필</a></div>
-                <div><a href="{% url 'Moonight' %}" class="meta-chat"><span class="icon-chat"></span> 11</a></div>
-              </div>
-              <h3 class="heading"><a href="{% url 'Moonight' %}">해리포터 아들과 비밀의 숲</a></h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry" data-aos-delay="100">
-            <a href="{% url 'moana'%}" class="block-20" style="background-image: url('/static/images/image-2.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-3">
-                <div><a href="{% url 'moana'%}">2021년 6월 30일</a></div><br>
-                <div><a href="{% url 'moana'%}">정준홍, 서희찬 공동 그림</a></div>
-                <div><a href="{% url 'moana'%}" class="meta-chat"><span class="icon-chat"></span> 8</a></div>
-              </div>
-              <h3 class="heading"><a href="#">모아나</a></h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry" data-aos-delay="200">
-            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image-4.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-3">
-                <div><a href="#">2021년 6월 21일</a></div><br>
-                <div><a href="#">강동희, 신예진 공동 집필</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-              <h3 class="heading"><a href="#">여인의 향기</a></h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry">
-            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image-3.jpg');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="#">2021년 6월 19일</a></div>
-                <div><a href="#">정준홍, 신예진, 정민경 공동 그림</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 5</a></div>
-              </div>
-              <h3 class="heading"><a href="#">자화상</a></h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry" data-aos-delay="100">
-            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image-1.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-3">
-                <div><a href="#">2021년 6월 18일</a></div><br>
-                <div><a href="#">이여원, 정민경 공동 작곡</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 19</a></div>
-              </div>
-              <h3 class="heading"><a href="#">Moonight</a></h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry" data-aos-delay="200">
-            <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url('/static/images/image-5.jpg');">
-            </a>
-            <div class="text p-4">
-              <div class="meta mb-3">
-                <div><a href="#">2021년 6월 11일</a></div>
-                <div><a href="#">서희찬, 강동희, 신예진 공동 집필</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 101</a></div>
-              </div>
-              <h3 class="heading"><a href="#">End Game</a></h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <ul>
-              <li><a href="#">&lt;</a></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&gt;</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
+<script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+</script>
 {% endblock %}
