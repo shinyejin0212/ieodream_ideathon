@@ -202,17 +202,15 @@ class BlogM(models.Model):
     def image_name(self):
         return self.image.name
 
-# <<<<<<< likes
-# class LikeML(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     post = models.ForeignKey(BlogM, on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
+class LikeML(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(BlogM, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-#     class Meta:
-#         unique_together =(('user','post'))
-# =======
-# >>>>>>> master
+    class Meta:
+        unique_together =(('user','post'))
+
 
 class BlogI(models.Model):
     id = models.AutoField(primary_key=True)
