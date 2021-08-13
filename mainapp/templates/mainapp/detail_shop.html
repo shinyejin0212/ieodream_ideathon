@@ -54,7 +54,7 @@
             <div class="row">
               <div class="col-md-8 ftco-animate">
                 <h2 class="mb-3">{{product.title}}</h2>
-                <div style="float: left;">작성자 : </div><p style="color: palevioletred;">{{product.writer}}</p><br>
+                <div style="float: left;">작성자 : </div><a href="{% url 'mypage:mypage' product.writer.id %}"><p style="color: palevioletred;">{{product.writer}}</p></a><br>
                 <p>{{product.pub_date}}</p>
                 <p style="color: black;">{{product.body}}</p><br>
                 {% if user == product.writer %}
@@ -80,7 +80,7 @@
           {%endif%}
           {% for comment in comment_sh %}
           <div>
-            <div style="float: left;">작성자 : </div><p style="color: palevioletred;">{{comment.writer}}</p>
+            <div style="float: left;">작성자 : </div><a href="{% url 'mypage:mypage' comment.writer.id %}"><p style="color: palevioletred;">{{comment.writer}}</p></a>
             <div class="meta">{{comment.created_at}}</div>
             <p style="color: black;">{{comment.content}}</p>
             {% if user == comment.writer %}
