@@ -54,7 +54,15 @@
             <div class="row">
               <div class="col-md-8 ftco-animate">
                 <h2 class="mb-3">{{product.title}}</h2>
-                <div style="float: left;">작성자 : </div><a href="{% url 'mypage:mypage' product.writer.id %}"><p style="color: palevioletred;">{{product.writer}}</p></a><br>
+                <div style="float: left;">
+                  작성자 : 
+                </div>
+                {%if user.is_authenticated%}
+                <a href="{% url 'mypage:mypage' product.writer.id %}">
+                  <p style="color: palevioletred;">{{product.writer}}</p></a><br>
+                {% else %}
+                <p style="color: palevioletred;">{{product.writer}}</p><br>
+                {% endif %}
                 <p>{{product.pub_date}}</p>
                 <p style="color: black;">{{product.body}}</p><br>
                 {% if user == product.writer %}
