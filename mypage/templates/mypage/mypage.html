@@ -64,7 +64,7 @@
             <a href="{%url 'mypage:mypage' following.user.id%}">{{following.user.username}}</a>
           {% endfor %}
         </div>
-      {% if user %} 
+        {% if request.user == user %}
         <a href="{% url 'mypage:profile_update' %}"><button type="button" class="btn btn-default" style="background-color:rgba(194, 180, 255, 0.774); color: whitesmoke; margin-top: 30px;">프로필 편집</button></a></h2></a>
       {% endif %}
   </div>
