@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)    
+    user = models.OneToOneField(User, primary_key=True,on_delete=models.CASCADE)    
     followings=models.ManyToManyField("self", related_name="followers", symmetrical=False)
     bio = models.TextField(max_length=20,null=True)
     profile_photo = models.ImageField(blank=True, null=True)
