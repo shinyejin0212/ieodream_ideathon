@@ -21,7 +21,7 @@
         <div class="col-md-8 ftco-animate">
           <h2 class="mb-3">{{music.title}}</h2>
           {%if user.is_authenticated%}
-          작성자 : <a href="{% url 'mypage:mypage' post.writer.id %}">{{post.writer}}</a>
+          작성자 : <a href="{% url 'mypage:mypage' music.writer.id %}">{{post.writer}}</a>
           {% else %}
           작성자 : {{post.writer}}
           {% endif %}
